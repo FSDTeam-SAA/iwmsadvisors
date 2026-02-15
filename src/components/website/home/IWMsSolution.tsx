@@ -29,7 +29,7 @@ const IWMsSolution = () => {
       <div className="mx-auto w-full container  px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h3 className="text-4xl font-semibold">IWMS Solutions</h3>
-          <h5 className="mt-1 text-xs text-white/80">
+          <h5 className="mt-1 text-base text-white">
             Comprehensive use cases for modern workplace management
           </h5>
         </div>
@@ -46,10 +46,10 @@ const IWMsSolution = () => {
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-[#0f66a6]">
                   <Icon className="h-5 w-5" />
                 </div>
-                <h3 className="mt-3 text-sm font-semibold">{item.title}</h3>
-                <p className="mt-1 text-[11px] text-white/80">
+                <h3 className="mt-3 text-2xl font-semibold">{item.title}</h3>
+                <h6 className="mt-1 text-base text-white">
                   {item.description}
-                </p>
+                </h6>
               </div>
             );
           })}

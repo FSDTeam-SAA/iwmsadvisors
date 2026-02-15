@@ -13,21 +13,21 @@ const Footer = () => {
                 IWM
               </div>
               <div className="leading-tight">
-                <p className="text-sm font-semibold tracking-wide text-white">
+                <h6 className="text-base font-semibold tracking-wide text-white">
                   IWMS
-                </p>
-                <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/80">
+                </h6>
+                <h6 className="text-base font-medium uppercase tracking-[0.2em] text-white">
                   Advisors
-                </p>
+                </h6>
               </div>
             </Link>
-            <p className="mt-3 text-xs text-white/80">
+            <h6 className="mt-3 text-base text-white">
               We are working to create your workplace
               <br />
               smarter. Built with smart city challenges
               <br />
               in a trusted company.
-            </p>
+            </h6>
             <div className="mt-4 space-y-2 text-xs">
               <div className="flex items-center gap-2">
                 <Mail className="h-3.5 w-3.5" />
@@ -49,7 +49,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-xs font-semibold uppercase tracking-wider">
+            <h3 className="text-2xl font-semibold uppercase tracking-wider">
               Quick Links
             </h3>
             <ul className="mt-3 space-y-2 text-base">
@@ -83,7 +83,7 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h3 className="text-xs font-semibold uppercase tracking-wider">
+            <h3 className="text-2xl font-semibold uppercase tracking-wider">
               Services
             </h3>
             <ul className="mt-3 space-y-2 text-base">
@@ -112,7 +112,7 @@ const Footer = () => {
 
           {/* Resources */}
           <div>
-            <h3 className="text-xs font-semibold uppercase tracking-wider">
+            <h3 className="text-2xl font-semibold uppercase tracking-wider">
               Resources
             </h3>
             <ul className="mt-3 space-y-2 text-base">
@@ -141,10 +141,10 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-white/20 pt-6 text-xs sm:flex-row">
-          <p className="text-white/70">
+        <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-white/20 pt-6 text-base sm:flex-row">
+          <h6 className="text-base text-white">
             Copyright © 2026 IWMS Advisors. All Rights Reserved.
-          </p>
+          </h6>
           <div className="flex items-center gap-3">
             <a
               href="https://twitter.com"

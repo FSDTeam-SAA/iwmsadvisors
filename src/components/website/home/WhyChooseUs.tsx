@@ -33,9 +33,9 @@ const WhyChooseUs = () => {
       <div className="mx-auto w-full container px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h4 className="text-4xl font-semibold text-white">Why Choose Us</h4>
-          <p className="mt-1 text-xs text-white/80">
+          <h6 className="mt-1 text-base text-white">
             Your trusted partner for enterprise IWMS success
-          </p>
+          </h6>
         </div>
 
         <div className="mt-7 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -50,10 +50,10 @@ const WhyChooseUs = () => {
                 <div className="flex h-11 w-11 items-center justify-center rounded-full bg-white/10">
                   <Icon className="h-5 w-5 text-white" />
                 </div>
-                <h3 className="mt-3 text-xs font-semibold">{item.title}</h3>
-                <p className="mt-1 text-[11px] text-white/80">
+                <h3 className="mt-3 text-2xl font-semibold">{item.title}</h3>
+                <h6 className="mt-1 text-base text-white">
                   {item.description}
-                </p>
+                </h6>
               </div>
             );
           })}
