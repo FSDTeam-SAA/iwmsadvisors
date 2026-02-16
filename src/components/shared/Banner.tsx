@@ -1,44 +1,56 @@
 import Link from "next/link";
-
 import { Button } from "@/components/ui/button";
 
 const Banner = () => {
   return (
-    <section
-      id="home"
-      className="relative min-h-[50vh] w-full overflow-hidden border-b border-slate-200 bg-slate-900"
-      style={{
-        backgroundImage:
-          "linear-gradient(90deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.45) 45%, rgba(0,0,0,0.1) 100%), url('/images/banner.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      <div className="mx-auto flex min-h-[360px] w-full max-w-6xl items-center px-4 py-12 sm:px-6 lg:px-8">
-        <div className="max-w-xl text-white">
-          <h1 className="text-6xl font-semibold leading-tight sm:text-3xl lg:text-4xl">
+    <section id="home" className="relative h-screen w-full overflow-hidden">
+      {/* Background Image + Gradient Overlay */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage: `
+            linear-gradient(
+              to right,
+              rgba(0, 0, 0, 0.8) 0%,
+              rgba(0, 0, 0, 0.6) 40%,
+              rgba(0, 0, 0, 0) 100%
+            ),
+            url('/images/banner.jpg')
+          `,
+        }}
+      />
+
+      {/* Content */}
+      <div className="relative z-10 mx-auto container flex min-h-screen items-center">
+        <div className=" text-white">
+          {/* Main Heading */}
+          <h1 className="text-4xl font-semibold leading-[1.1] sm:text-5xl md:text-6xl lg:text-7xl">
             Integrated IWMS
             <br />
-            Solutions for Smarter Facilities
+            <span className="text-white/90">
+              Solutions for Smarter Facilities
+            </span>
           </h1>
-          <h4 className="mt-3 text-2xl font-medium uppercase tracking-[0.2em] text-white">
-            Streamline your facilities with enterprise-grade IWMS solutions
-          </h4>
-          <h5 className="mt-2 text-base text-white">
-            for Space, Asset, and Operations Management.
-          </h5>
 
-          <div className="mt-6 flex flex-wrap items-center gap-3">
+          {/* Subtext */}
+          <p className="mt-6 text-lg opacity-90 font-normal  md:text-xl text-white max-w-3xl">
+            Streamline Your Facilities With Enterprise-Grade IWMS Solutions For
+            Space, Asset, And Operations Management.
+          </p>
+
+          {/* Buttons */}
+          <div className="mt-10 flex flex-wrap gap-5">
             <Button
               asChild
-              className="h-9 rounded-sm bg-primary px-4 text-xs font-semibold uppercase tracking-wide text-white hover:bg-blue-700"
+              className="h-14 rounded-md bg-[#0052cc] px-8 text-base font-medium text-white transition-all hover:bg-[#0047b3] hover:shadow-lg hover:shadow-blue-500/20"
             >
               <Link href="#about">Learn More About Us</Link>
             </Button>
+
             <Button
               asChild
               variant="outline"
-              className="h-9 rounded-sm border-primary bg-transparent px-4 text-xs font-semibold uppercase tracking-wide text-white hover:bg-white/10"
+              className="h-14 rounded-md border-2 border-white/30 bg-transparent px-8 text-base font-medium text-white transition-all hover:bg-white/10 hover:border-white/50 hover:text-white"
             >
               <Link href="#contact">Talk to an Expert</Link>
             </Button>
