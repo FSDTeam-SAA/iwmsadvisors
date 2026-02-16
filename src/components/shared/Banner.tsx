@@ -16,29 +16,29 @@ const Banner = () => {
     >
       <div className="mx-auto flex min-h-[360px] w-full max-w-6xl items-center px-4 py-12 sm:px-6 lg:px-8">
         <div className="max-w-xl text-white">
-          <h1 className="text-6xl font-semibold leading-tight sm:text-3xl lg:text-4xl">
+          <h1 className="text-2xl font-semibold leading-tight sm:text-3xl lg:text-4xl">
             Integrated IWMS
             <br />
             Solutions for Smarter Facilities
           </h1>
-          <h4 className="mt-3 text-2xl font-medium uppercase tracking-[0.2em] text-white">
+          <h4 className="mt-3 text-xs font-medium uppercase tracking-[0.2em] text-white">
             Streamline your facilities with enterprise-grade IWMS solutions
           </h4>
-          <h5 className="mt-2 text-base text-white">
+          <h5 className="mt-2 text-sm text-white">
             for Space, Asset, and Operations Management.
           </h5>
 
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <Button
               asChild
-              className="h-9 rounded-sm bg-primary px-4 text-xs font-semibold uppercase tracking-wide text-white hover:bg-blue-700"
+              className="h-9 rounded-sm bg-blue-600 px-4 text-xs font-semibold uppercase tracking-wide text-white hover:bg-blue-700"
             >
               <Link href="#about">Learn More About Us</Link>
             </Button>
             <Button
               asChild
               variant="outline"
-              className="h-9 rounded-sm border-primary bg-transparent px-4 text-xs font-semibold uppercase tracking-wide text-white hover:bg-white/10"
+              className="h-9 rounded-sm border-white/60 bg-transparent px-4 text-xs font-semibold uppercase tracking-wide text-white hover:bg-white/10"
             >
               <Link href="#contact">Talk to an Expert</Link>
             </Button>
