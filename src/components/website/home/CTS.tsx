@@ -10,11 +10,11 @@ const CTS = () => {
           <h3 className="text-4xl text-white font-semibold ">
             Ready to modernize your workplace management?
           </h3>
-          <h6 className="mt-2 text-base text-white">
+          <p className="mt-2 text-xs text-white/90">
             Connect with our IWMS experts to discuss your specific needs and
             <br className="hidden sm:block" />
             explore how we can help transform your operations.
-          </h6>
+          </p>
           <div className="mt-5">
             <Button
               asChild

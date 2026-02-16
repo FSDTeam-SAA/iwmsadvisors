@@ -1,46 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   const [activeLink, setActiveLink] = useState("#home");
-  const pathname = usePathname();
 
   const navItems = [
     { label: "Home", href: "#home" },
-    { label: "Services", href: "/services" },
+    { label: "Services", href: "#services" },
     { label: "Case Studies", href: "#case-studies" },
-    { label: "About", href: "/about" },
+    { label: "About", href: "#about" },
   ];
-
-  useEffect(() => {
-    const updateActiveLink = () => {
-      if (pathname?.startsWith("/services")) {
-        setActiveLink("/services");
-        return;
-      }
-
-      const hash = window.location.hash;
-      if (hash) {
-        setActiveLink(hash);
-      } else {
-        setActiveLink("#home");
-      }
-    };
-
-    updateActiveLink();
-    window.addEventListener("hashchange", updateActiveLink);
-    window.addEventListener("popstate", updateActiveLink);
-
-    return () => {
-      window.removeEventListener("hashchange", updateActiveLink);
-      window.removeEventListener("popstate", updateActiveLink);
-    };
-  }, [pathname]);
 
   return (
     <header className="w-full border-b border-slate-200 bg-white">
@@ -50,7 +23,7 @@ const Navbar = () => {
             IWM
           </div>
           <div className="leading-tight">
-            <p className="text-base font-semibold tracking-wide text-slate-900">
+            <p className="text-sm font-semibold tracking-wide text-slate-900">
               IWMS
             </p>
             <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-slate-500">
@@ -59,7 +32,7 @@ const Navbar = () => {
           </div>
         </Link>
 
-        <nav className="hidden items-center gap-6 text-base font-medium md:flex">
+        <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
           {navItems.map((item) => {
             const isActive = activeLink === item.href;
 
@@ -86,7 +59,7 @@ const Navbar = () => {
             className="h-9 rounded-full bg-blue-600 px-5 text-xs font-semibold uppercase tracking-wide text-white hover:bg-blue-700"
             asChild
           >
-            <Link href="/contact">Contact Us</Link>
+            <Link href="#contact">Contact Us</Link>
           </Button>
         </div>
       </div>

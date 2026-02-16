@@ -30,12 +30,12 @@ const OurServiceCard = ({
       </div>
 
       <div className="absolute inset-0 flex flex-col justify-end p-4 text-white">
-        <h3 className="text-xl font-semibold">{title}</h3>
-        <h6 className="mt-1 text-base text-white">{description}</h6>
+        <h3 className="text-sm font-semibold">{title}</h3>
+        <p className="mt-1 text-[11px] text-slate-200">{description}</p>
         <div className="mt-3">
           <Button
             asChild
-            className="h-7 rounded-sm bg-transparent border-2 px-3 text-[10px] font-semibold uppercase tracking-wide text-white hover:bg-white/10 hover:border-white/80"
+            className="h-7 rounded-sm bg-blue-600 px-3 text-[10px] font-semibold uppercase tracking-wide text-white hover:bg-blue-700"
           >
             <Link href={href}>Learn More</Link>
           </Button>
