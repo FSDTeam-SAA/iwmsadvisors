@@ -5,32 +5,33 @@ type CaseStudyCardProps = {
   title: string;
   description: string;
   image: string;
-  href?: string;
+  _id?: string;
 };
 
 const CaseStudyCard = ({
   title,
   description,
   image,
-  href = "#",
+  _id
 }: CaseStudyCardProps) => {
   return (
-    <div className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
-      <div className="relative h-32 w-full">
+    <div className="overflow-hidden rounded-lg   bg-[#F5F6F8] shadow-sm">
+      <div className="relative  w-full aspect-5/3 p-3">
         <Image
           src={image}
           alt={title}
-          fill
-          className="object-cover"
-          sizes="(max-width: 1024px) 100vw, 33vw"
+            width={483}
+            height={300}
+          className="object-cover w-full aspect-5/3"
+     
         />
       </div>
       <div className="space-y-2 p-3">
-        <h3 className="text-xs font-semibold text-slate-900">{title}</h3>
-        <p className="text-[11px] text-slate-600">{description}</p>
+        <h4 className="text-2xl leading-[120%] font-semibold text-[#2C2C2C] ">{title}</h4>
+        <p className="text-base my-3 leading-[120%] text-[#6B6B6B]">{description}</p>
         <Link
-          href={href}
-          className="text-[11px] font-semibold text-blue-600 hover:text-blue-700"
+          href={`/case-study/${_id}`}
+          className="text-base leading-6 font-semibold text-primary hover:text-primary/90"
         >
           View Case Studies →
         </Link>

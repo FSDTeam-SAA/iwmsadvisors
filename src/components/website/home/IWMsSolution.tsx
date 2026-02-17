@@ -25,16 +25,16 @@ const IWMsSolution = () => {
   ];
 
   return (
-    <section className="w-full bg-[#0f66a6] py-12 text-white">
+    <section className="w-full bg-primary my-12 md:my-20 py-15 text-white">
       <div className="mx-auto w-full container  px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h3 className="text-4xl font-semibold">IWMS Solutions</h3>
-          <h5 className="mt-1 text-base text-white">
+          <h3 className="text-4xl mb-2 font-bold leading-[150%] ">IWMS Solutions</h3>
+          <h5 className="mt-1 text-xl leading-[120%] font-normal text-white">
             Comprehensive use cases for modern workplace management
           </h5>
         </div>
 
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 md:mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {solutions.map((item) => {
             const Icon = item.icon;
 
@@ -43,13 +43,13 @@ const IWMsSolution = () => {
                 key={item.title}
                 className="flex flex-col items-center text-center"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-[#0f66a6]">
-                  <Icon className="h-5 w-5" />
+                <div className="flex  items-center justify-center p-4 rounded-full bg-white text-[#0f66a6]">
+                  <Icon className="h-8 w-8 " />
                 </div>
-                <h3 className="mt-3 text-2xl font-semibold">{item.title}</h3>
-                <h6 className="mt-1 text-base text-white">
+                <h3 className="mt-4 text-2xl leading-[120%] font-semibold">{item.title}</h3>
+                <p className="mt-3 text-base font-normal leading-[120%] text-white">
                   {item.description}
-                </h6>
+                </p>
               </div>
             );
           })}

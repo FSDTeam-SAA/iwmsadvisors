@@ -1,49 +1,62 @@
+'use client';
 import RealEstateFacilitiesCard from "@/components/shared/RealEstateFacilitiesCard";
 
+import { useRealEstate } from "@/lib/hooks/useRealEstate";
+import { RealEstate } from "@/lib/type/realEstate";
+
+
+
 const RealEstateFacilities = () => {
-  const cards = [
-    {
-      title: "Real Estate & Lease Management",
-      image: "/images/sercive3.png",
-    },
-    {
-      title: "Capital Planning & Projects",
-      image: "/images/service.png",
-    },
-    {
-      title: "Space Optimization & Workplace Management",
-      image: "/images/service2.png",
-    },
-    {
-      title: "Operations & Maintenance",
-      image: "/images/sercive3.png",
-    },
-    {
-      title: "Sustainability & Energy Management",
-      image: "/images/service.png",
-    },
-    {
-      title: "Performance Analytics & Reporting",
-      image: "/images/service2.png",
-    },
-  ];
+  const { data: realEstateData, isLoading, error } = useRealEstate();
+
+  if (isLoading) {
+    return (
+      <section className="w-full bg-white my-12 md:my-20">
+        <div className="mx-auto w-full container px-4 sm:px-6 lg:px-8">
+          <div className="text-center animate-pulse">
+            <div className="h-10 bg-slate-200 rounded w-2/3 mx-auto mb-4"></div>
+            <div className="h-6 bg-slate-100 rounded w-1/2 mx-auto"></div>
+          </div>
+          <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {[1, 2, 3, 4, 5, 6].map((n) => (
+              <div key={n} className="aspect-5/3 bg-slate-50 rounded-lg animate-pulse" />
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className="w-full bg-white my-12 md:my-20">
+        <div className="mx-auto w-full container px-4 sm:px-6 lg:px-8 text-center text-red-500">
+          Failed to load facilities. Please try again later.
+        </div>
+      </section>
+    );
+  }
 
   return (
-    <section className="w-full bg-white py-12">
+    <section className="w-full bg-white my-12 md:my-20">
       <div className="mx-auto w-full container  px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="text-4xl font-semibold text-slate-900">
+          <h3 className="text-4xl md:text-5xl leading-12 mb-2  font-bold text-[#0F2C59]">
             Maximo® Real Estate & Facilities
-          </h2>
-          <p className="mt-1 text-base text-slate-500">
+          </h3>
+          <p className="mt-1 text-base md:text-2xl font-normal text-[#4A5565] ">
             Technology solutions powered by IBM Maximo for enterprise workplace
             management
           </p>
         </div>
 
         <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {cards.map((card) => (
-            <RealEstateFacilitiesCard key={card.title} {...card} />
+          {realEstateData?.data?.slice(0, 4).map((card: RealEstate) => (
+            <RealEstateFacilitiesCard 
+              key={card._id} 
+              title={card.title} 
+              image={card.image?.url || "/images/placeholder.jpg"} 
+            />
           ))}
         </div>
       </div>

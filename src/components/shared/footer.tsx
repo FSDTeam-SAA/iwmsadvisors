@@ -13,21 +13,21 @@ const Footer = () => {
                 IWM
               </div>
               <div className="leading-tight">
-                <h6 className="text-base font-semibold tracking-wide text-white">
+                <p className="text-sm font-semibold tracking-wide text-white">
                   IWMS
-                </h6>
-                <h6 className="text-base font-medium uppercase tracking-[0.2em] text-white">
+                </p>
+                <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/80">
                   Advisors
-                </h6>
+                </p>
               </div>
             </Link>
-            <h6 className="mt-3 text-base text-white">
+            <p className="mt-3 text-xs text-white/80">
               We are working to create your workplace
               <br />
               smarter. Built with smart city challenges
               <br />
               in a trusted company.
-            </h6>
+            </p>
             <div className="mt-4 space-y-2 text-xs">
               <div className="flex items-center gap-2">
                 <Mail className="h-3.5 w-3.5" />
@@ -49,32 +49,37 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-2xl font-semibold uppercase tracking-wider">
+            <h3 className="text-xs font-semibold uppercase tracking-wider">
               Quick Links
             </h3>
             <ul className="mt-3 space-y-2 text-base">
               <li>
-                <Link href="#home" className="hover:text-white/80">
+                <Link href="/" className="hover:text-white/80">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="#services" className="hover:text-white/80">
+                <Link href="/services" className="hover:text-white/80">
                   Services
                 </Link>
               </li>
               <li>
-                <Link href="#case-studies" className="hover:text-white/80">
+                <Link href="/case-studies" className="hover:text-white/80">
                   Case Studies
                 </Link>
               </li>
               <li>
-                <Link href="#about" className="hover:text-white/80">
+                <Link href="/about" className="hover:text-white/80">
                   About
                 </Link>
               </li>
+                   <li>
+                <Link href="/blog" className="hover:text-white/80">
+                  Blog
+                </Link>
+              </li>
               <li>
-                <Link href="#contact" className="hover:text-white/80">
+                <Link href="/contact" className="hover:text-white/80">
                   Contact
                 </Link>
               </li>
@@ -83,7 +88,7 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h3 className="text-2xl font-semibold uppercase tracking-wider">
+            <h3 className="text-xs font-semibold uppercase tracking-wider">
               Services
             </h3>
             <ul className="mt-3 space-y-2 text-base">
@@ -112,7 +117,7 @@ const Footer = () => {
 
           {/* Resources */}
           <div>
-            <h3 className="text-2xl font-semibold uppercase tracking-wider">
+            <h3 className="text-xs font-semibold uppercase tracking-wider">
               Resources
             </h3>
             <ul className="mt-3 space-y-2 text-base">
@@ -141,10 +146,10 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-white/20 pt-6 text-base sm:flex-row">
-          <h6 className="text-base text-white">
+        <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-white/20 pt-6 text-xs sm:flex-row">
+          <p className="text-white/70">
             Copyright © 2026 IWMS Advisors. All Rights Reserved.
-          </h6>
+          </p>
           <div className="flex items-center gap-3">
             <a
               href="https://twitter.com"

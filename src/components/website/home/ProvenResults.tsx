@@ -21,10 +21,10 @@ const ProvenResults = () => {
     <section className="w-full bg-white py-12">
       <div className="mx-auto w-full container  px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="text-lg font-semibold text-slate-900">
+          <h3 className="text-2xl sm:text-4xl font-bold leading-[120%] text-[#2C2C2C]">
             Proven Results
-          </h2>
-          <p className="mt-1 text-xs text-slate-500">
+          </h3>
+          <p className="mt-2 text-xl leading-[120%] font-normal text-[#6B6B6B]">
             Delivering measurable impact for our clients
           </p>
         </div>
@@ -33,15 +33,15 @@ const ProvenResults = () => {
           {results.map((item) => (
             <div
               key={item.title}
-              className="rounded-md border border-slate-100 bg-white p-4"
+              className="rounded-md  border-slate-100 bg-white p-4"
             >
-              <p className="text-2xl font-semibold text-slate-900">
+              <p className="text-5xl leading-[120%] font-semibold text-[#2C2C2C]">
                 {item.value}
               </p>
-              <p className="mt-1 text-xs font-semibold text-slate-700">
+              <p className="mt-2 text-2xl font-bold text-[#2C2C2C] leading-[120%]">
                 {item.title}
               </p>
-              <p className="mt-1 text-[11px] text-slate-500">
+              <p className="mt-2 text-base text-[#6B6B6B] leading-[120%] ">
                 {item.description}
               </p>
             </div>

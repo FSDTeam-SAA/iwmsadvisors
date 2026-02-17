@@ -1,52 +1,25 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
 const Navbar = () => {
   const [activeLink, setActiveLink] = useState("#home");
-  const pathname = usePathname();
 
   const navItems = [
-    { label: "Home", href: "#home" },
+    { label: "Home", href: "/" },
     { label: "Services", href: "/services" },
-    { label: "Case Studies", href: "#case-studies" },
+    { label: "Case Studies", href: "/case-study" },
     { label: "About", href: "/about" },
   ];
-
-  useEffect(() => {
-    const updateActiveLink = () => {
-      if (pathname?.startsWith("/services")) {
-        setActiveLink("/services");
-        return;
-      }
-
-      const hash = window.location.hash;
-      if (hash) {
-        setActiveLink(hash);
-      } else {
-        setActiveLink("#home");
-      }
-    };
-
-    updateActiveLink();
-    window.addEventListener("hashchange", updateActiveLink);
-    window.addEventListener("popstate", updateActiveLink);
-
-    return () => {
-      window.removeEventListener("hashchange", updateActiveLink);
-      window.removeEventListener("popstate", updateActiveLink);
-    };
-  }, [pathname]);
 
   return (
     <header className="w-full border-b border-slate-200 bg-white">
       <div className="mx-auto flex w-full container items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2 ">
           <Image src="/images/logo.png" alt="Logo" width={100} height={100} />
         </Link>
 
@@ -70,16 +43,15 @@ const Navbar = () => {
               </Link>
             );
           })}
+          <div className="flex items-center gap-3">
+            <Button
+              className="h-9 rounded-full px-5 text-xs font-semibold uppercase tracking-wide"
+              asChild
+            >
+              <Link href="/contact">Contact Us</Link>
+            </Button>
+          </div>
         </nav>
-
-        <div className="flex items-center gap-3">
-          <Button
-            className="h-9 rounded-full bg-blue-600 px-5 text-xs font-semibold uppercase tracking-wide text-white hover:bg-blue-700"
-            asChild
-          >
-            <Link href="/contact">Contact Us</Link>
-          </Button>
-        </div>
       </div>
     </header>
   );

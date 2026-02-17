@@ -42,7 +42,7 @@ const Banner = () => {
           <div className="mt-10 flex flex-wrap gap-5">
             <Button
               asChild
-              className="h-14 rounded-md bg-[#0052cc] px-8 text-base font-medium text-white transition-all hover:bg-[#0047b3] hover:shadow-lg hover:shadow-blue-500/20"
+              className="h-14 rounded-md px-8 text-base font-medium transition-all hover:shadow-lg hover:shadow-blue-500/20"
             >
               <Link href="#about">Learn More About Us</Link>
             </Button>
