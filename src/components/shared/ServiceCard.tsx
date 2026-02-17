@@ -35,7 +35,7 @@ const ServiceCard = ({
         <div className="mt-3">
           <Button
             asChild
-            className="h-7 rounded-sm bg-transparent border-2 px-3 text-[10px] font-semibold uppercase tracking-wide text-white hover:bg-white/10 hover:border-white/80"
+            className="h-7 rounded-sm px-3 text-[10px] font-semibold uppercase tracking-wide"
           >
             <Link href={href}>Learn More</Link>
           </Button>

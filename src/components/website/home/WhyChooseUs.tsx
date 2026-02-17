@@ -29,16 +29,16 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <section className="w-full bg-[#0f66a6] py-10 text-white">
+    <section className="w-full bg-[#0D67A9] my-12 md:my-20 py-12 text-white">
       <div className="mx-auto w-full container px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h4 className="text-4xl font-semibold text-white">Why Choose Us</h4>
-          <p className="mt-1 text-xs text-white/80">
+          <h4 className="text-4xl mb-2 font-bold leading-[150%] ">Why Choose Us</h4>
+          <h5 className="mt-1 text-xl leading-[120%] font-normal text-white">
             Your trusted partner for enterprise IWMS success
-          </p>
+          </h5>
         </div>
 
-        <div className="mt-7 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 md:mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {items.map((item) => {
             const Icon = item.icon;
 
@@ -47,11 +47,11 @@ const WhyChooseUs = () => {
                 key={item.title}
                 className="flex flex-col items-center text-center"
               >
-                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-white/10">
-                  <Icon className="h-5 w-5 text-white" />
+                <div className="flex  items-center justify-center p-4 rounded-full bg-[#3173a3]  text-white">
+                  <Icon className="h-8 w-8 text-white " />
                 </div>
-                <h3 className="mt-3 text-xs font-semibold">{item.title}</h3>
-                <p className="mt-1 text-[11px] text-white/80">
+                <h3 className="mt-4 text-base leading-[120%] font-semibold">{item.title}</h3>
+                <p className="mt-3 text-base font-normal leading-[120%] text-white">
                   {item.description}
                 </p>
               </div>
