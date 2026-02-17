@@ -20,6 +20,7 @@ export const metadata: Metadata = {
 };
 
 import ReactQueryProvider from "@/providers/ReactQueryProvider";
+import { Toaster } from "sonner";
 
 export default function RootLayout({
   children,
@@ -35,6 +36,7 @@ export default function RootLayout({
           <Navbar />
           {children}
           <Footer />
+          <Toaster position="top-center" richColors />
         </ReactQueryProvider>
       </body>
     </html>

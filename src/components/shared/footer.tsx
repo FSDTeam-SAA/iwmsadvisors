@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Facebook, Linkedin, Mail, Phone, Twitter } from "lucide-react";
+import Image from "next/image";
 
 const Footer = () => {
   return (
@@ -9,38 +10,34 @@ const Footer = () => {
           {/* Logo & Description */}
           <div className="lg:col-span-2">
             <Link href="/" className="inline-flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-[11px] font-bold text-[#0f66a6]">
-                IWM
-              </div>
-              <div className="leading-tight">
-                <p className="text-sm font-semibold tracking-wide text-white">
-                  IWMS
-                </p>
-                <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/80">
-                  Advisors
-                </p>
-              </div>
+              <Image
+                src={"/images/footerLogo.png"}
+                width={100}
+                height={67}
+                alt="IWMS Advisors Footer Logo "
+                className="w-full h-full"
+              />
             </Link>
-            <p className="mt-3 text-xs text-white/80">
+            <p className="mt-3 text-sm text-white">
               We are working to create your workplace
               <br />
               smarter. Built with smart city challenges
               <br />
               in a trusted company.
             </p>
-            <div className="mt-4 space-y-2 text-xs">
+            <div className="mt-4 space-y-2 text-sm">
               <div className="flex items-center gap-2">
                 <Mail className="h-3.5 w-3.5" />
                 <a
                   href="mailto:info@iwmsadvisors.com"
-                  className="hover:text-white/80"
+                  className="hover:text-white"
                 >
                   info@iwmsadvisors.com
                 </a>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="h-3.5 w-3.5" />
-                <a href="tel:+14444444" className="hover:text-white/80">
+                <a href="tel:+14444444" className="hover:text-white">
                   +1 444 44 44
                 </a>
               </div>
@@ -49,12 +46,12 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-xs font-semibold uppercase tracking-wider">
+            {/* <h3 className="text-xs font-semibold uppercase tracking-wider">
               Quick Links
-            </h3>
+            </h3> */}
             <ul className="mt-3 space-y-2 text-base">
               <li>
-                <Link href="/" className="hover:text-white/80">
+                <Link href="/" className="hover:text-white">
                   Home
                 </Link>
               </li>
@@ -73,14 +70,10 @@ const Footer = () => {
                   About
                 </Link>
               </li>
-                   <li>
-                <Link href="/blog" className="hover:text-white/80">
-                  Blog
-                </Link>
-              </li>
+             
               <li>
-                <Link href="/contact" className="hover:text-white/80">
-                  Contact
+                <Link href="/career" className="hover:text-white/80">
+                  Careers
                 </Link>
               </li>
             </ul>
@@ -88,9 +81,9 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h3 className="text-xs font-semibold uppercase tracking-wider">
+            {/* <h3 className="text-xs font-semibold uppercase tracking-wider">
               Services
-            </h3>
+            </h3> */}
             <ul className="mt-3 space-y-2 text-base">
               <li>
                 <Link href="#services" className="hover:text-white/80">
@@ -117,28 +110,18 @@ const Footer = () => {
 
           {/* Resources */}
           <div>
-            <h3 className="text-xs font-semibold uppercase tracking-wider">
-              Resources
-            </h3>
+            {/* <h3 className="text-xs font-semibold uppercase tracking-wider">
+              Contact us
+            </h3> */}
             <ul className="mt-3 space-y-2 text-base">
               <li>
+                <Link href="/contact" className="hover:text-white">
+                  Contact Us
+                </Link>
+              </li>
+              <li>
                 <Link href="#case-studies" className="hover:text-white/80">
-                  Case Studies
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="hover:text-white/80">
-                  Blog & Articles
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="hover:text-white/80">
-                  Documentation
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="hover:text-white/80">
-                  Support
+                  FAQ
                 </Link>
               </li>
             </ul>
