@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-
-import SinglePageMain from '@/components/website/casestudy/single/SinglePageMain';
-
+import CareerDetails from '@/components/website/careers/CareerDetails'
 import React from 'react'
+
+
 
 const page = ({ params }: { params: Promise<{ id: string }> }) =>{
    const { id } = React.use(params);
@@ -11,7 +11,7 @@ const page = ({ params }: { params: Promise<{ id: string }> }) =>{
 
   return (
     <div>
-       <SinglePageMain id={id} />
+      <CareerDetails  id={id}/>
        
     </div>
   )

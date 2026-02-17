@@ -1,0 +1,166 @@
+"use client";
+
+import React, { useState } from "react";
+import { useCareers } from "@/lib/hooks/useCareer";
+import { Career } from "@/lib/type/career";
+import Link from "next/link";
+
+const Careers = () => {
+  const { data: careersData, isLoading, error } = useCareers();
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const careers = careersData?.data || [];
+
+  const filteredCareers = careers.filter(
+    (career: Career) =>
+      career.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      career.role?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      career.department.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      career.location.toLowerCase().includes(searchTerm.toLowerCase()),
+  );
+
+  if (isLoading) {
+    return (
+      <section className="w-full bg-gradient-to-b from-gray-50 to-white min-h-screen py-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center animate-pulse mb-12">
+            <div className="h-12 bg-slate-200 rounded w-64 mx-auto mb-4"></div>
+            <div className="h-6 bg-slate-100 rounded w-96 mx-auto"></div>
+          </div>
+          <div className="space-y-4">
+            {[1, 2, 3, 4, 5].map((n) => (
+              <div
+                key={n}
+                className="bg-slate-100 rounded-lg h-24 animate-pulse"
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className="w-full bg-gradient-to-b from-gray-50 to-white min-h-screen py-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="bg-red-50 border border-red-200 rounded-xl p-6">
+            <p className="text-red-600 font-medium">
+              Failed to load careers. Please try again later.
+            </p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section className="w-full bg-gradient-to-b from-gray-50 to-white min-h-screen py-16">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
+            Join Our Team
+          </h1>
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+            Explore exciting career opportunities and help us transform workplace and operational efficiency and excellence.
+          </p>
+        </div>
+
+        {/* Search Bar */}
+        <div className="max-w-2xl mx-auto mb-12">
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Search Jobs"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full px-6 py-4 pr-16 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent shadow-sm"
+            />
+            <button className="absolute right-2 top-1/2 -translate-y-1/2 bg-primary text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+              Search
+            </button>
+          </div>
+        </div>
+
+        {/* Jobs Table */}
+        <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+          <div className="overflow-x-auto">
+            <table className="w-full">
+              <thead>
+                <tr className="bg-gray-100 border-b border-gray-200">
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">
+                    Role
+                  </th>
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">
+                    Department
+                  </th>
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">
+                    Location
+                  </th>
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">
+                    Type
+                  </th>
+                  <th className="px-6 py-4 text-center text-sm font-semibold text-gray-700">
+                    Action
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200">
+                {filteredCareers.length > 0 ? (
+                  filteredCareers.map((career: Career) => (
+                    <tr
+                      key={career._id}
+                      className="hover:bg-gray-50 transition-colors group"
+                    >
+                      <td className="px-6 py-4 text-sm font-medium text-gray-900">
+                        <div>
+                          <p className="font-semibold">{career.title}</p>
+                          {career.role && (
+                            <p className="text-gray-600 text-xs">
+                              {career.role}
+                            </p>
+                          )}
+                        </div>
+                      </td>
+                      <td className="px-6 py-4 text-sm text-gray-700">
+                        {career.department}
+                      </td>
+                      <td className="px-6 py-4 text-sm text-gray-700">
+                        {career.location}
+                      </td>
+                      <td className="px-6 py-4 text-sm">
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 capitalize">
+                          {career.type}
+                        </span>
+                      </td>
+                      <td className="px-6 py-4 text-center">
+                        <Link
+                          href={`/career/${career._id}`}
+                          className="inline-flex items-center px-4 py-2 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-primary/80 transition-colors"
+                        >
+                          View Details
+                        </Link>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td
+                      colSpan={5}
+                      className="px-6 py-12 text-center text-gray-500"
+                    >
+                      No careers found matching your search.
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Careers;

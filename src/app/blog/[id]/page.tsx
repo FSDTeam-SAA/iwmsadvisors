@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 
-import SinglePageMain from '@/components/website/casestudy/single/SinglePageMain';
 
+import SingleBlogMain from '@/components/website/blog/singleblog/SingleBlogMain';
 import React from 'react'
 
 const page = ({ params }: { params: Promise<{ id: string }> }) =>{
@@ -11,7 +11,7 @@ const page = ({ params }: { params: Promise<{ id: string }> }) =>{
 
   return (
     <div>
-       <SinglePageMain id={id} />
+       <SingleBlogMain id={id} />
        
     </div>
   )
