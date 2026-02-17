@@ -1,75 +1,129 @@
 import axios from "axios";
 
+const getBaseUrl = () => {
+  return process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api/v1";
+};
 
+const url = getBaseUrl();
 
-const url =process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api/v1";
-
-
-export async function getServices(){
-    try{
-       const data=await axios.get(`${url}/service-page`);
-       return data.data;
-    }catch(error){
-        throw new Error((error as Error).message || "Failed to fetch services");
-    }
+export async function getServices() {
+  try {
+    const data = await axios.get(`${url}/service-page`);
+    return data.data;
+  } catch (error) {
+    throw new Error((error as Error).message || "Failed to fetch services");
+  }
 }
-export async function getSingleServices(id: string){
-    try{
-       const data=await axios.get(`${url}/service-page/${id}`);
-       return data.data;
-    }catch(error){
-        throw new Error((error as Error).message || "Failed to fetch services");
-    }
+export async function getSingleServices(id: string) {
+  try {
+    const data = await axios.get(`${url}/service-page/${id}`);
+    return data.data;
+  } catch (error) {
+    throw new Error((error as Error).message || "Failed to fetch services");
+  }
 }
 
 export async function getRealEstate() {
-    try {
-        const data = await axios.get(`${url}/real-state`);
-        return data.data;
-    } catch (error) {
-        throw new Error((error as Error).message || "Failed to fetch real estate facilities");
-    }
+  try {
+    const data = await axios.get(`${url}/real-state`);
+    return data.data;
+  } catch (error) {
+    throw new Error(
+      (error as Error).message || "Failed to fetch real estate facilities",
+    );
+  }
 }
 
-export async function getBlogs() {
-    try {
-        const data = await axios.get(`${url}/blog`);
-        return data.data;
-    } catch (error) {
-        throw new Error((error as Error).message || "Failed to fetch blogs");
-    }
+export async function getSingleRealEstate(id: string) {
+  try {
+    const data = await axios.get(`${url}/real-state/${id}`);
+    return data.data;
+  } catch (error) {
+    throw new Error(
+      (error as Error).message || "Failed to fetch single real estate",
+    );
+  }
 }
 
+export async function getBlogs(page: number = 1, limit: number = 8) {
+  try {
+    const data = await axios.get(`${url}/blog?page=${page}&limit=${limit}`);
+    return data.data;
+  } catch (error) {
+    throw new Error((error as Error).message || "Failed to fetch blogs");
+  }
+}
+export async function getSingleBlog(id: string) {
+  try {
+    const data = await axios.get(`${url}/blog/${id}`);
+    return data.data;
+  } catch (error) {
+    throw new Error((error as Error).message || "Failed to fetch single blog");
+  }
+}
 
 // case CaseStudyCard
 
 export async function getCaseStudies() {
-    try {
-        const data = await axios.get(`${url}/case-study`);
-        return data.data;
-    } catch (error) {
-        throw new Error((error as Error).message || "Failed to fetch case studies");
-    }
+  try {
+    const data = await axios.get(`${url}/case-study`);
+    return data.data;
+  } catch (error) {
+    throw new Error((error as Error).message || "Failed to fetch case studies");
+  }
 }
 export async function getSingleCaseStudy(id: string) {
-    try {
-        const data = await axios.get(`${url}/case-study/${id}`);
-        return data.data;
-    } catch (error) {
-        throw new Error((error as Error).message || "Failed to fetch single case study");
-    }
+  try {
+    const data = await axios.get(`${url}/case-study/${id}`);
+    return data.data;
+  } catch (error) {
+    throw new Error(
+      (error as Error).message || "Failed to fetch single case study",
+    );
+  }
 }
 
 export async function postContact(formData: FormData) {
-    try {
-        const data = await axios.post(`${url}/contact`, formData, {
-            headers: {
-                'Content-Type': 'multipart/form-data',
-            },
-        });
-        return data.data;
-    } catch (error) {
-        throw new Error((error as Error).message || "Failed to send message");
-    }
+  try {
+    const data = await axios.post(`${url}/contact`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    return data.data;
+  } catch (error) {
+    throw new Error((error as Error).message || "Failed to send message");
+  }
 }
 
+// Career Endpoints
+export async function getCareers() {
+  try {
+    const data = await axios.get(`${url}/career`);
+    return data.data;
+  } catch (error) {
+    throw new Error((error as Error).message || "Failed to fetch careers");
+  }
+}
+
+export async function getSingleCareer(id: string) {
+  try {
+    const data = await axios.get(`${url}/career/${id}`);
+    return data.data;
+  } catch (error) {
+    throw new Error((error as Error).message || "Failed to fetch career");
+  }
+}
+
+export async function postCareerApplication(formData: FormData) {
+  try {
+    const data = await axios.post(`${url}/career`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    return data.data;
+  } catch (error) {
+    throw new Error((error as Error).message || "Failed to submit application");
+  }
+}
