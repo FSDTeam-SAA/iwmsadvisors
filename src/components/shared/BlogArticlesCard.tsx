@@ -19,27 +19,29 @@ const BlogArticlesCard = ({
   href = "#",
 }: BlogArticlesCardProps) => {
   return (
-    <article className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
-      <div className="relative h-24 w-full">
+    <article className="overflow-hidden rounded-lg  border-slate-200 bg-white shadow-sm">
+      <div className="relative  w-full aspect-5/3">
         <Image
           src={image}
           alt={title}
-          fill
-          className="object-cover"
-          sizes="(max-width: 1024px) 100vw, 25vw"
+       width={392}
+       height={172}
+          className="object-cover w-full aspect-5/3"
+
         />
       </div>
       <div className="space-y-2 p-3">
-        <div className="flex items-center gap-2 text-[10px] text-slate-400">
-          <span>{date}</span>
+        <div className="flex items-center justify-between gap-2 text-[10px] text-slate-400">
+  
+          <span className="text-sm text-[#838383]">{date}</span>
           <span className="h-1 w-1 rounded-full bg-slate-300" />
-          <span>{readTime}</span>
+          <span className="text-sm text-[#838383]">{readTime}</span>
         </div>
-        <h3 className="text-xs font-semibold text-slate-900">{title}</h3>
-        <p className="text-[11px] text-slate-600">{excerpt}</p>
+        <h3 className="text-lg leading-[120%] font-semibold text-[#191D23]">{title}</h3>
+        <p className="text-sm text-[#838383] leading-[120%] font-normal line-clamp-3">{excerpt}</p>
         <Link
           href={href}
-          className="text-[11px] font-semibold text-blue-600 hover:text-blue-700"
+          className="text-base leading-[120%] font-semibold text-primary hover:text-primary/90"
         >
           Read More
         </Link>

@@ -54,27 +54,32 @@ const Footer = () => {
             </h3>
             <ul className="mt-3 space-y-2 text-base">
               <li>
-                <Link href="#home" className="hover:text-white/80">
+                <Link href="/" className="hover:text-white/80">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="#services" className="hover:text-white/80">
+                <Link href="/services" className="hover:text-white/80">
                   Services
                 </Link>
               </li>
               <li>
-                <Link href="#case-studies" className="hover:text-white/80">
+                <Link href="/case-studies" className="hover:text-white/80">
                   Case Studies
                 </Link>
               </li>
               <li>
-                <Link href="#about" className="hover:text-white/80">
+                <Link href="/about" className="hover:text-white/80">
                   About
                 </Link>
               </li>
+                   <li>
+                <Link href="/blog" className="hover:text-white/80">
+                  Blog
+                </Link>
+              </li>
               <li>
-                <Link href="#contact" className="hover:text-white/80">
+                <Link href="/contact" className="hover:text-white/80">
                   Contact
                 </Link>
               </li>

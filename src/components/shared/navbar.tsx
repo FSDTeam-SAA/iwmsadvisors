@@ -10,30 +10,20 @@ const Navbar = () => {
   const [activeLink, setActiveLink] = useState("#home");
 
   const navItems = [
-    { label: "Home", href: "#home" },
-    { label: "Services", href: "#services" },
-    { label: "Case Studies", href: "#case-studies" },
-    { label: "About", href: "#about" },
+    { label: "Home", href: "/" },
+    { label: "Services", href: "/services" },
+    { label: "Case Studies", href: "/case-study" },
+    { label: "About", href: "/about" },
   ];
 
   return (
     <header className="w-full border-b border-slate-200 bg-white">
       <div className="mx-auto flex w-full container items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-[11px] font-bold text-slate-700">
-            IWM
-          </div>
-          <div className="leading-tight">
-            <p className="text-sm font-semibold tracking-wide text-slate-900">
-              IWMS
-            </p>
-            <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-slate-500">
-              Advisors
-            </p>
-          </div>
+        <Link href="/" className="flex items-center gap-2 ">
+          <Image src="/images/logo.png" alt="Logo" width={100} height={100} />
         </Link>
 
-        <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
+        <nav className="hidden items-center gap-6 text-base font-medium md:flex">
           {navItems.map((item) => {
             const isActive = activeLink === item.href;
 
@@ -53,16 +43,15 @@ const Navbar = () => {
               </Link>
             );
           })}
+          <div className="flex items-center gap-3">
+            <Button
+              className="h-9 rounded-full px-5 text-xs font-semibold uppercase tracking-wide"
+              asChild
+            >
+              <Link href="/contact">Contact Us</Link>
+            </Button>
+          </div>
         </nav>
-
-        <div className="flex items-center gap-3">
-          <Button
-            className="h-9 rounded-full bg-blue-600 px-5 text-xs font-semibold uppercase tracking-wide text-white hover:bg-blue-700"
-            asChild
-          >
-            <Link href="#contact">Contact Us</Link>
-          </Button>
-        </div>
       </div>
     </header>
   );

@@ -11,18 +11,19 @@ const RealEstateFacilitiesCard = ({
 }: RealEstateFacilitiesCardProps) => {
   return (
     <div className="group relative overflow-hidden rounded-lg border border-slate-200 bg-slate-900">
-      <div className="relative h-36 w-full sm:h-40">
+      <div className="relative  w-full  aspect-5/3">
         <Image
           src={image}
           alt={title}
-          fill
-          className="object-cover transition-transform duration-300 group-hover:scale-105"
-          sizes="(max-width: 1024px) 100vw, 33vw"
+        width={530}
+          height={240}
+          className="object-cover w-full aspect-5/3 transition-transform duration-300 group-hover:scale-105"
+
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
       </div>
-      <div className="absolute inset-x-0 bottom-0 p-3">
-        <h3 className="text-xs font-semibold text-white drop-shadow">
+      <div className="absolute  group-hover:block bottom-2 left-2 flex-col justify-end p-4 text-white transform duration-500 ease-in-out">
+        <h3 className="text-2xl font-bold leading-6  text-white ">
           {title}
         </h3>
       </div>

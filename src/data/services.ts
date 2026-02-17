@@ -10,27 +10,27 @@ export const services: ServiceItem[] = [
     title: "IWMS Consulting",
     description:
       "Streamlining workplace operations with expert IWMS advisory services.",
-    image: "/images/service.png",
+    image: "/images/services1.png",
     href: "#contact",
   },
   {
     title: "IWMS Implementation",
     description:
       "End-to-end deployment of enterprise workplace management solutions.",
-    image: "/images/sercive3.png",
+    image: "/images/services2.png",
     href: "#contact",
   },
   {
     title: "System Integration",
     description:
       "Seamless integration across platforms for unified operations.",
-    image: "/images/service2.png",
+    image: "/images/services3.png",
     href: "#contact",
   },
   {
     title: "Managed Support",
     description: "Reliable support to maximize uptime and performance.",
-    image: "/images/sercive3.png",
+    image: "/images/services4.png",
     href: "#contact",
   },
 ];

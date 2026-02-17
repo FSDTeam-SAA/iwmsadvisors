@@ -56,9 +56,9 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
   --primary: #0d67a9;
-  --primary-foreground: #101828;
+  --primary-foreground: #ffffff;
   --secondary: #2c2c2c;
-  --secondary-foreground: oklch(0.205 0 0);
+  --secondary-foreground: #ffffff;
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
   --accent: oklch(0.97 0 0);
@@ -90,9 +90,9 @@
   --popover: oklch(0.205 0 0);
   --popover-foreground: oklch(0.985 0 0);
   --primary: #0d67a9;
-  --primary-foreground: #101828;
+  --primary-foreground: #ffffff;
   --secondary: #2c2c2c;
-  --secondary-foreground: oklch(0.985 0 0);
+  --secondary-foreground: #ffffff;
   --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.708 0 0);
   --accent: oklch(0.269 0 0);
@@ -131,11 +131,7 @@ h2 {
   font-size: 32px;
   color: var(--primary);
 }
-p {
-  font-size: 16px;
-  color: var(--primary-foreground);
-  font-weight: normal;
-}
+ 
 @media (min-width: 768px) {
   h2 {
     font-size: 40px;

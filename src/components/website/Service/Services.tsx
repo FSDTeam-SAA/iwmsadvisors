@@ -1,21 +1,53 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { Settings2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { serviceDetails } from "@/data/serviceDetails";
+import { useServices } from "@/lib/hooks/useService";
+import { Service } from "@/lib/type/services";
 
 const Services = () => {
+  const { data: servicesData, isLoading, error } = useServices();
+
+  if (isLoading) {
+    return (
+      <section id="services" className="w-full bg-white py-12">
+        <div className="container mx-auto w-full space-y-8 px-4 sm:px-6 lg:px-8">
+          {[1, 2, 3].map((n) => (
+            <div key={n} className="h-64 bg-slate-50 rounded-md animate-pulse" />
+          ))}
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section id="services" className="w-full bg-white py-12">
+        <div className="container mx-auto w-full px-4 sm:px-6 lg:px-8 text-center text-red-500">
+          Failed to load services. Please try again later.
+        </div>
+      </section>
+    );
+  }
+
+  const services = servicesData?.data || [];
   return (
     <section id="services" className="w-full bg-white py-12">
       <div className="container mx-auto w-full space-y-8 px-4 sm:px-6 lg:px-8">
-        {serviceDetails.map((service, index) => {
-          const isReversed = service.reverse ?? index % 2 === 1;
-          const Icon = service.icon;
+        {services.map((service: Service, index: number) => {
+          const isReversed = index % 2 === 1;
+          
+          // Match the icon from static details by title, fallback to Settings2
+          const staticMatch = serviceDetails.find(s => s.title === service.title);
+          const Icon = staticMatch?.icon || Settings2;
 
           return (
             <div
-              key={service.title}
-              className="grid items-center gap-8 rounded-md border border-slate-200 bg-white p-6 md:grid-cols-2"
+              key={service._id}
+              className="grid items-center gap-8 rounded-md  border-slate-200 bg-white p-6 md:grid-cols-2"
             >
               <div className={isReversed ? "md:order-2" : "md:order-1"}>
                 <div className="mb-3 flex items-center gap-2">
@@ -28,7 +60,7 @@ const Services = () => {
                 </div>
                 <div className="mb-3 inline-flex items-center gap-2 rounded-md bg-rose-50 px-3 py-1 text-base font-medium text-rose-600">
                   <span className="inline-flex h-2 w-2 rounded-md bg-rose-500" />
-                  {service.badge}
+                  {service.guideline}
                 </div>
                 <p className="mt-3 whitespace-pre-line text-base text-slate-600">
                   {service.description}
@@ -38,10 +70,10 @@ const Services = () => {
                     asChild
                     className="h-9 bg-primary text-white px-4 text-base"
                   >
-                    <Link href={service.href ?? "#contact"}>Contact Us</Link>
+                    <Link href="/contact">Contact Us</Link>
                   </Button>
                   <Link
-                    href={service.href ?? "#contact"}
+                    href={`/services/${service._id}`}
                     className="text-base font-semibold text-slate-900"
                   >
                     Learn More
@@ -50,13 +82,14 @@ const Services = () => {
               </div>
 
               <div className={isReversed ? "md:order-1" : "md:order-2"}>
-                <div className="relative h-60 w-full overflow-hidden rounded-md md:h-64">
+                <div className="relative  w-full overflow-hidden rounded-md aspect-5/3">
                   <Image
-                    src={service.image}
+                    src={service.image?.url || "/images/no.jpg"}
                     alt={service.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
+                   width={720}
+                   height={490}
+                    className="object-cover w--full aspect-5/3  rounded-2xl"
+                    
                   />
                 </div>
               </div>

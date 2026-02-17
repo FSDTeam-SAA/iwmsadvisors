@@ -7,12 +7,12 @@ const AboutTeam = () => {
       {/* Hero Section */}
       <section className="w-full bg-slate-50 py-12 md:py-16">
         <div className="container mx-auto w-full px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-8 md:grid-cols-2">
+          <div className="grid gap-8 md:grid-cols-2 items-center">
             <div>
-              <h1 className="text-4xl font-bold text-slate-900">
+              <h1 className="text-4xl font-bold text-primary">
                 Transforming Facility Management Through Technology
               </h1>
-              <p className="mt-4 text-base text-slate-600">
+              <p className="mt-4 text-base text-[#4A5565]">
                 IWMS Advisors delivers comprehensive workplace management
                 solutions that combine industry expertise with cutting-edge
                 technology. Our team of certified professionals brings decades
@@ -20,37 +20,50 @@ const AboutTeam = () => {
                 Integrated Workplace Management Systems for organizations
                 worldwide.
               </p>
-              <p className="mt-4 text-base text-slate-600">
+              <p className="mt-4 text-base text-[#4A5565]">
                 We are committed to helping organizations unlock the full
                 potential of their facilities, reduce operational costs, and
                 create better workplace experiences for their teams. Our
                 client-centric approach ensures that every solution is tailored
                 to your unique business needs and objectives.
               </p>
+              <p className="mt-4 text-base text-[#4A5565]">
+                At IWMS Solutions, we believe in building long-term partnerships
+                rather than one-time projects. Our commitment extends beyond
+                go-live, offering continuous support, system optimization, and
+                performance monitoring to ensure our clients achieve maximum
+                return on their IWMS investments. By combining technical
+                excellence with a client-first mindset, we help organizations
+                create more efficient, compliant, and responsive workplace
+                environments.
+              </p>
             </div>
-            <div className="grid gap-3 sm:grid-cols-2">
-              <div className="relative h-40 overflow-hidden rounded-md">
+            <div className="grid gap-3 sm:grid-cols-2 ">
+              <div className="relative w-full aspect-5/3 overflow-hidden rounded-md">
                 <Image
-                  src="/images/service.png"
+                  src="/images/about2.jpg"
                   alt="Team collaboration"
-                  fill
-                  className="object-cover"
+                  width={300}
+                  height={260}
+                  className="object-cover w-full aspect-5/3 rounded-md"
                 />
               </div>
-              <div className="relative h-40 overflow-hidden rounded-md">
+              <div className="relative w-full aspect-5/3 overflow-hidden rounded-md">
                 <Image
-                  src="/images/service.png"
+                  src="/images/about3.jpg"
                   alt="Team meeting"
-                  fill
-                  className="object-cover"
+                  width={466}
+                  height={260}
+                  className="object-cover w-full aspect-5/3 rounded-md"
                 />
               </div>
-              <div className="relative h-40 overflow-hidden rounded-md sm:col-span-2">
+              <div className="relative overflow-hidden w-full aspect-5/3 rounded-md sm:col-span-2">
                 <Image
-                  src="/images/service.png"
+                  src="/images/about4.png"
                   alt="Team workspace"
-                  fill
-                  className="object-cover"
+                  width={796}
+                  height={410}
+                  className="object-cover w-full aspect-5/3 rounded-md"
                 />
               </div>
             </div>

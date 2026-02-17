@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useRef, useState } from "react";
 import { Upload, X } from "lucide-react";
-import { toast } from "sonner";
+
 
 import { Button } from "@/components/ui/button";
 import {
@@ -26,6 +26,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { toast } from "sonner";
+
+import { usePostContact } from "@/lib/hooks/useContact";
+import { useServices } from "@/lib/hooks/useService";
+import { Service } from "@/lib/type/services";
 
 const formSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
@@ -35,13 +40,18 @@ const formSchema = z.object({
   service: z.string().min(1, "Please select a service"),
   message: z.string().min(10, "Message must be at least 10 characters"),
 });
+interface contactselect{
+   value: string, // Usually better to send title or _id depending on backend. User provided 'service' in FormData.
+    label: string
+}
 
 type FormValues = z.infer<typeof formSchema>;
 
 const ContactForm = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const postContactMutation = usePostContact();
+  const { data: servicesData, isLoading: isLoadingServices } = useServices();
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -75,36 +85,48 @@ const ContactForm = () => {
   };
 
   async function onSubmit(data: FormValues) {
-    setIsSubmitting(true);
-    try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      
-      const formData = {
-        ...data,
-        file: uploadedFile?.name || null,
-      };
-      console.log("Form submitted:", formData);
-      
-      toast.success("Thank you! Your message has been sent successfully.");
-      form.reset();
-      setUploadedFile(null);
-    } catch (error) {
-      console.error("Submission error:", error);
-      toast.error("Something went wrong. Please try again later.");
-    } finally {
-      setIsSubmitting(false);
+    const formData = new FormData();
+    formData.append("firstName", data.firstName);
+    formData.append("lastName", data.lastName);
+    formData.append("email", data.email); 
+    formData.append("phone", data.phone);
+    formData.append("service", data.service);
+    formData.append("message", data.message);
+    
+    if (uploadedFile) {
+      formData.append("file", uploadedFile);
     }
+
+    postContactMutation.mutate(formData, {
+      onSuccess: () => {
+        toast.success("Thank you! Your message has been sent successfully.");
+        form.reset();
+        setUploadedFile(null);
+      
+      },
+      onError: (error) => {
+        console.error("Submission error:", error);
+        toast.error((error as Error).message || "Something went wrong. Please try again later.");
+        
+      },
+    });
   }
+
+  const isSubmitting = postContactMutation.isPending;
+
+  const servicesOptions = servicesData?.data.map((service:Service) => ({
+    value: service.title, // Usually better to send title or _id depending on backend. User provided 'service' in FormData.
+    label: service.title,
+  })) || [];
 
   return (
     <section className="w-full bg-white py-12">
       <div className="container mx-auto w-full px-4 sm:px-6 lg:px-8">
         <div className="grid gap-8 md:grid-cols-2">
           {/* Image */}
-          <div className="relative hidden h-full min-h-[400px] overflow-hidden rounded-md md:block">
+          <div className="relative hidden rounded-tr-[15%] rounded-bl-[10%] overflow-hidden  md:block">
             <Image
-              src="/images/service.png"
+              src="/images/contact.jpg"
               alt="Contact us"
               fill
               className="object-cover"
@@ -204,19 +226,23 @@ const ContactForm = () => {
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="consulting">
-                            IWMS Consulting
-                          </SelectItem>
-                          <SelectItem value="implementation">
-                            IWMS Implementation
-                          </SelectItem>
-                          <SelectItem value="integration">
-                            System Integration
-                          </SelectItem>
-                          <SelectItem value="support">
-                            Managed Support
-                          </SelectItem>
+                          {isLoadingServices ? (
+                            <SelectItem value="loading" disabled>
+                              Loading services...
+                            </SelectItem>
+                          ) : servicesOptions.length > 0 ? (
+                            servicesOptions.map((service:contactselect) => (
+                              <SelectItem key={service.value} value={service.value}>
+                                {service.label}
+                              </SelectItem>
+                            ))
+                          ) : (
+                            <SelectItem value="none" disabled>
+                              No services available
+                            </SelectItem>
+                          )}
                         </SelectContent>
+                       
                       </Select>
                       <FormMessage />
                     </FormItem>
@@ -294,7 +320,7 @@ const ContactForm = () => {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-primary text-base text-white hover:bg-[#064d35]"
+                  className="w-full text-base"
                 >
                   {isSubmitting ? "Sending..." : "Send Message"}
                 </Button>

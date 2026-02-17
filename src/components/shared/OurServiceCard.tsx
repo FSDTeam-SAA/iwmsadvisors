@@ -1,41 +1,41 @@
+
 import Image from "next/image";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
+import { Service } from "@/lib/type/services";
 
-type OurServiceCardProps = {
-  title: string;
-  description: string;
-  image: string;
-  href?: string;
-};
+
 
 const OurServiceCard = ({
   title,
   description,
   image,
-  href = "#",
-}: OurServiceCardProps) => {
+  _id
+}: Service) => {
+  const imageUrl = image?.url || "/images/placeholder.jpg";
+  const href = `/services/${_id}`;
+  
   return (
-    <div className="group relative overflow-hidden rounded-lg border border-slate-200 bg-slate-900">
-      <div className="relative h-44 w-full sm:h-48">
+    <div className="group relative overflow-hidden rounded-lg">
+      <div className="relative w-full aspect-5/3">
         <Image
-          src={image}
+          src={imageUrl}
           alt={title}
-          fill
-          className="object-cover transition-transform duration-300 group-hover:scale-105"
-          sizes="(max-width: 1024px) 100vw, 50vw"
+          width={803}
+          height={370}
+          className="object-cover w-full aspect-5/3"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
       </div>
 
-      <div className="absolute inset-0 flex flex-col justify-end p-4 text-white">
-        <h3 className="text-sm font-semibold">{title}</h3>
-        <p className="mt-1 text-[11px] text-slate-200">{description}</p>
+      <div className="absolute   bottom-8 left-6 flex-col justify-end p-4 text-white transform duration-500 ease-in-out">
+        <h3 className="text-xl leading-8 mb-2 font-bold">{title}</h3>
+        <p className="text-sm text-white line-clamp-2">{description}</p>
         <div className="mt-3">
           <Button
             asChild
-            className="h-7 rounded-sm bg-blue-600 px-3 text-[10px] font-semibold uppercase tracking-wide text-white hover:bg-blue-700"
+            className="rounded-sm text-lg font-semibold leading-8"
           >
             <Link href={href}>Learn More</Link>
           </Button>
