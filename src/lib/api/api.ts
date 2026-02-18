@@ -127,3 +127,22 @@ export async function postCareerApplication(formData: FormData) {
     throw new Error((error as Error).message || "Failed to submit application");
   }
 }
+
+// FAQ Endpoints
+export async function getFAQs() {
+  try {
+    const data = await axios.get(`${url}/faq`);
+    return data.data;
+  } catch (error) {
+    throw new Error((error as Error).message || "Failed to fetch FAQs");
+  }
+}
+
+export async function getSingleFAQ(id: string) {
+  try {
+    const data = await axios.get(`${url}/faq/${id}`);
+    return data.data;
+  } catch (error) {
+    throw new Error((error as Error).message || "Failed to fetch FAQ");
+  }
+}
