@@ -12,8 +12,8 @@ const Banner = () => {
             linear-gradient(
               to right,
               rgba(0, 0, 0, 0.8) 0%,
-              rgba(0, 0, 0, 0.6) 40%,
-              rgba(0, 0, 0, 0) 100%
+              rgba(0, 0, 0, 0.6) 10%,
+              rgba(0, 0, 0, 0) 40%
             ),
             url('/images/banner.jpg')
           `,
