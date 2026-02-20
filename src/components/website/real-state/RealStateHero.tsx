@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import CustomImage from '@/components/shared/CustomImage'
 import React from 'react'
 
 const RealStateHero = ({ image, title, description, subtitles }: { image: string, title: string, description?: string, subtitles?: string[] }) => {
@@ -6,8 +6,8 @@ const RealStateHero = ({ image, title, description, subtitles }: { image: string
     <section className="relative w-full overflow-hidden min-h-[40vh] md:min-h-[60vh] flex items-center justify-center">
       {/* Background Image Container */}
       <div className="absolute inset-0 z-0">
-        <Image
-          src={image || "/images/no.jpg"}
+        <CustomImage
+          src={image}
           alt={title}
           fill
           className="object-cover"

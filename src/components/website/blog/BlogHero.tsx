@@ -1,11 +1,11 @@
-import Image from "next/image";
+import CustomImage from "@/components/shared/CustomImage";
 import React from "react";
 
 const BlogHero = () => {
   return (
     <section className="relative w-full">
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        <Image
+        <CustomImage
           src="/images/blog.jpg"
           alt="Services Hero"
           fill

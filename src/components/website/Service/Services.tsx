@@ -1,5 +1,6 @@
 "use client";
-import Image from "next/image";
+
+import CustomImage from "@/components/shared/CustomImage";
 import Link from "next/link";
 import { Settings2 } from "lucide-react";
 
@@ -83,8 +84,8 @@ const Services = () => {
 
               <div className={isReversed ? "md:order-1" : "md:order-2"}>
                 <div className="relative  w-full overflow-hidden rounded-md aspect-5/3">
-                  <Image
-                    src={service.image?.url || "/images/no.jpg"}
+                  <CustomImage
+                    src={service.image?.url}
                     alt={service.title}
                    width={720}
                    height={490}

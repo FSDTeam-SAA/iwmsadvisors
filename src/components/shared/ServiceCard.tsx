@@ -1,4 +1,4 @@
-import Image from "next/image";
+import CustomImage from "@/components/shared/CustomImage";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
@@ -19,7 +19,7 @@ const ServiceCard = ({
   return (
     <div className="group relative overflow-hidden rounded-lg border border-slate-200 bg-slate-900">
       <div className="relative h-44 w-full sm:h-48">
-        <Image
+        <CustomImage
           src={image}
           alt={title}
           fill

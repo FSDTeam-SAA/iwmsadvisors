@@ -1,11 +1,8 @@
-
-import Image from "next/image";
+import CustomImage from "@/components/shared/CustomImage";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import { Service } from "@/lib/type/services";
-
-
 
 const OurServiceCard = ({
   title,
@@ -13,13 +10,13 @@ const OurServiceCard = ({
   image,
   _id
 }: Service) => {
-  const imageUrl = image?.url || "/images/placeholder.jpg";
+  const imageUrl = image?.url;
   const href = `/services/${_id}`;
   
   return (
     <div className="group relative overflow-hidden rounded-lg">
       <div className="relative w-full aspect-5/3">
-        <Image
+        <CustomImage
           src={imageUrl}
           alt={title}
           width={803}

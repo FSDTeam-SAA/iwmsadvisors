@@ -1,11 +1,11 @@
-import Image from 'next/image'
+import CustomImage from '@/components/shared/CustomImage'
 import React from 'react'
 
 const CaseStudyHero = () => {
   return (
    <section className="relative w-full h-[40vh]">
          <div className="absolute inset-0 -z-10 overflow-hidden">
-           <Image
+           <CustomImage
              src="/images/casestudiesbanner.jpg"
              alt="Services Hero"
              fill

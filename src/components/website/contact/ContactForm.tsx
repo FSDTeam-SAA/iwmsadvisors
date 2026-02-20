@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import CustomImage from "@/components/shared/CustomImage";
 import { useRef, useState } from "react";
 import { Upload, X } from "lucide-react";
 
@@ -125,7 +125,7 @@ const ContactForm = () => {
         <div className="grid gap-8 md:grid-cols-2">
           {/* Image */}
           <div className="relative hidden rounded-tr-[15%] rounded-bl-[10%] overflow-hidden  md:block">
-            <Image
+            <CustomImage
               src="/images/contact.jpg"
               alt="Contact us"
               fill

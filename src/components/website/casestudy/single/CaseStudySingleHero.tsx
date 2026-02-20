@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import CustomImage from '@/components/shared/CustomImage'
 import React from 'react'
 
 const CaseStudySingleHero = ({
@@ -13,7 +13,7 @@ const CaseStudySingleHero = ({
   return (
        <section className="relative w-full">
          <div className="absolute inset-0 -z-10 overflow-hidden">
-           <Image
+           <CustomImage
              src={image}
              alt={title}
              fill

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Mail, MapPin, Phone } from "lucide-react";
 
 const ContactInformation = () => {

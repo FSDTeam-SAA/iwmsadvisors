@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
+import CustomImage from "@/components/shared/CustomImage";
 
 const Navbar = () => {
   const [activeLink, setActiveLink] = useState("#home");
@@ -20,7 +20,7 @@ const Navbar = () => {
     <header className="w-full border-b border-slate-200 bg-white">
       <div className="mx-auto flex w-full container items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2 ">
-          <Image src="/images/logo.png" alt="Logo" width={180} height={150} />
+          <CustomImage src="/images/logo.png" alt="Logo" width={180} height={150} />
         </Link>
 
         <nav className="hidden items-center gap-6 text-base font-medium md:flex">

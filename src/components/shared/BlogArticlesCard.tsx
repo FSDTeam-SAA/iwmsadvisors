@@ -1,4 +1,4 @@
-import Image from "next/image";
+import CustomImage from "@/components/shared/CustomImage";
 import Link from "next/link";
 
 type BlogArticlesCardProps = {
@@ -21,7 +21,7 @@ const BlogArticlesCard = ({
   return (
     <article className="overflow-hidden rounded-lg  border-slate-200 bg-white shadow-sm">
       <div className="relative  w-full aspect-5/3">
-        <Image
+        <CustomImage
           src={image}
           alt={title}
        width={392}
