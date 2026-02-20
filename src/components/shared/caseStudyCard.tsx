@@ -1,4 +1,4 @@
-import Image from "next/image";
+import CustomImage from "@/components/shared/CustomImage";
 import Link from "next/link";
 
 type CaseStudyCardProps = {
@@ -17,13 +17,13 @@ const CaseStudyCard = ({
   return (
     <div className="overflow-hidden rounded-lg   bg-[#F5F6F8] shadow-sm">
       <div className="relative  w-full aspect-5/3 p-3">
-        <Image
+        <CustomImage
           src={image}
           alt={title}
             width={483}
             height={300}
           className="object-cover w-full aspect-5/3"
-     
+      
         />
       </div>
       <div className="space-y-2 p-3">

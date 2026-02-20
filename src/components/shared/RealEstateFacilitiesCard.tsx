@@ -1,4 +1,4 @@
-import Image from "next/image";
+import CustomImage from "@/components/shared/CustomImage";
 
 type RealEstateFacilitiesCardProps = {
   title: string;
@@ -12,7 +12,7 @@ const RealEstateFacilitiesCard = ({
   return (
     <div className="group relative overflow-hidden rounded-lg border border-slate-200 bg-slate-900">
       <div className="relative  w-full  aspect-5/3">
-        <Image
+        <CustomImage
           src={image}
           alt={title}
         width={530}

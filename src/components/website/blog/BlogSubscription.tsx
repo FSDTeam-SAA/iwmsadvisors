@@ -2,40 +2,42 @@
 
 import React, { useState } from "react";
 import { toast } from "sonner";
+import { useBroadcastSubscribe } from "@/lib/hooks/useBroadcast";
 
 const BlogSubscription = () => {
   const [email, setEmail] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const { mutateAsync, isPending } = useBroadcastSubscribe();
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    const normalizedEmail = email.trim();
+
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!email) {
+    if (!normalizedEmail) {
       toast.error("Please enter your email address");
       return;
     }
 
-    if (!emailRegex.test(email)) {
+    if (!emailRegex.test(normalizedEmail)) {
       toast.error("Please enter a valid email address");
       return;
     }
 
-    setIsLoading(true);
-
     try {
-      // Simulate API call - replace with your actual API endpoint
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-
-      toast.success(
-        "Successfully subscribed! Check your email for confirmation.",
-      );
+      const response = await mutateAsync(normalizedEmail);
+      const message =
+        response?.message ||
+        "Successfully subscribed! Check your email for confirmation.";
+      toast.success(message);
       setEmail("");
     } catch (error) {
-      toast.error("Something went wrong. Please try again.");
-    } finally {
-      setIsLoading(false);
+      const errorMessage =
+        error instanceof Error
+          ? error.message
+          : "Something went wrong. Please try again.";
+      toast.error(errorMessage);
     }
   };
 
@@ -96,17 +98,17 @@ const BlogSubscription = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your business email"
                   className="w-full pl-12 pr-4 py-4 text-gray-900 placeholder-gray-400 bg-white border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent shadow-sm hover:shadow-md transition-all duration-300"
-                  disabled={isLoading}
+                  disabled={isPending}
                 />
               </div>
 
               {/* Subscribe Button */}
               <button
                 type="submit"
-                disabled={isLoading}
+                disabled={isPending}
                 className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-lg flex items-center justify-center gap-2 min-w-[140px]"
               >
-                {isLoading ? (
+                {isPending ? (
                   <>
                     <svg
                       className="animate-spin h-5 w-5 text-white"
