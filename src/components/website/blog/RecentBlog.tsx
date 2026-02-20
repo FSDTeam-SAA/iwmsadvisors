@@ -1,6 +1,7 @@
 "use client";
 import { useBlog } from "@/lib/hooks/useBlog";
-import Image from "next/image";
+
+import CustomImage from "@/components/shared/CustomImage";
 import Link from "next/link";
 import React from "react";
 import { Blog } from "@/lib/type/blog";
@@ -91,8 +92,8 @@ const RecentBlog = () => {
             className="group relative overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-300"
           >
             <div className="relative w-full aspect-5/2 overflow-hidden">
-              <Image
-                src={featuredBlog.image?.url || "/images/no-imge.jpg"}
+              <CustomImage
+                src={featuredBlog.image?.url}
                 width={770}
                 height={200}
                 alt={featuredBlog.title}
@@ -188,8 +189,8 @@ const RecentBlog = () => {
               >
                 {/* Blog Image */}
                 <div className="relative w-32 h-32 flex-shrink-0 rounded-lg overflow-hidden">
-                  <Image
-                    src={blog.image?.url || "/images/no-imge.jpg"}
+                  <CustomImage
+                    src={blog.image?.url}
                     fill
                     alt={blog.title}
                     className="object-cover transition-transform duration-300 group-hover:scale-110"

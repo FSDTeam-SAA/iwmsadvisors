@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Facebook, Linkedin, Mail, Phone, Twitter } from "lucide-react";
-import Image from "next/image";
+import CustomImage from "@/components/shared/CustomImage";
 
 const Footer = () => {
   return (
@@ -10,7 +10,7 @@ const Footer = () => {
           {/* Logo & Description */}
           <div className="lg:col-span-2">
             <Link href="/" className="inline-flex items-center gap-2">
-              <Image
+              <CustomImage
                 src={"/images/footerLogo.png"}
                 width={100}
                 height={67}

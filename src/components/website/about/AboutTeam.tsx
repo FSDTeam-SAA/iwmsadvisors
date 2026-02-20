@@ -1,4 +1,4 @@
-import Image from "next/image";
+import CustomImage from "@/components/shared/CustomImage";
 import { Award, Briefcase, CheckCircle, Lock } from "lucide-react";
 
 const AboutTeam = () => {
@@ -40,7 +40,7 @@ const AboutTeam = () => {
             </div>
             <div className="grid gap-3 sm:grid-cols-2 ">
               <div className="relative w-full aspect-5/3 overflow-hidden rounded-md">
-                <Image
+                <CustomImage
                   src="/images/about2.jpg"
                   alt="Team collaboration"
                   width={300}
@@ -49,7 +49,7 @@ const AboutTeam = () => {
                 />
               </div>
               <div className="relative w-full aspect-5/3 overflow-hidden rounded-md">
-                <Image
+                <CustomImage
                   src="/images/about3.jpg"
                   alt="Team meeting"
                   width={466}
@@ -58,7 +58,7 @@ const AboutTeam = () => {
                 />
               </div>
               <div className="relative overflow-hidden w-full aspect-5/3 rounded-md sm:col-span-2">
-                <Image
+                <CustomImage
                   src="/images/about4.png"
                   alt="Team workspace"
                   width={796}

@@ -3,9 +3,11 @@ import { Button } from '@/components/ui/button';
 import { useSingleBlog } from '@/lib/hooks/useBlog';
 import { FAQItem } from '@/lib/type/services';
 import { Plus } from 'lucide-react';
-import Image from 'next/image';
+
+import CustomImage from '@/components/shared/CustomImage';
 import Link from 'next/link';
 import React, { useState } from 'react'
+
 type ServiceSingleProps = {
   id: string;
 };
@@ -140,8 +142,8 @@ const SingleBlogMain = ({ id }: ServiceSingleProps) => {
           {/* Right Column */}
           <div className="space-y-6">
             <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden border">
-              <Image
-                src={blog.image?.url || "/images/no.jpg"}
+              <CustomImage
+                src={blog.image?.url}
                 alt={blog.title}
                 fill
                 className="object-cover"

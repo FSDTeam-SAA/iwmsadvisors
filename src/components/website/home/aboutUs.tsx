@@ -1,4 +1,4 @@
-import Image from "next/image";
+import CustomImage from "@/components/shared/CustomImage";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
@@ -56,7 +56,7 @@ const AboutUs = () => {
           </div>
 
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm border border-slate-200">
-            <Image
+            <CustomImage
               src="/images/about.jpg"
               alt="Team collaborating in a modern office"
               fill

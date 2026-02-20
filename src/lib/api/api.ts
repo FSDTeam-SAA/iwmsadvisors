@@ -146,3 +146,15 @@ export async function getSingleFAQ(id: string) {
     throw new Error((error as Error).message || "Failed to fetch FAQ");
   }
 }
+
+// Broadcast Subscribe
+export async function postBroadcastSubscribe(email: string) {
+  try {
+    const data = await axios.post(`${url}/broadcast/subscribe`, { email });
+    return data.data;
+  } catch (error) {
+    throw new Error(
+      (error as Error).message || "Failed to subscribe. Please try again.",
+    );
+  }
+}
