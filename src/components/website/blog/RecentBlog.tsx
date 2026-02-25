@@ -157,8 +157,7 @@ const RecentBlog = () => {
               </p>
 
               {/* Read More Link */}
-              <Link
-                href={`/blog/${featuredBlog._id}`}
+              <span
                 className="inline-flex items-center gap-2 text-primary font-semibold group-hover:translate-x-2 transition-transform"
               >
                 Read More
@@ -175,7 +174,7 @@ const RecentBlog = () => {
                     d="M17 8l4 4m0 0l-4 4m4-4H3"
                   />
                 </svg>
-              </Link>
+              </span>
             </div>
           </Link>
 
@@ -244,8 +243,7 @@ const RecentBlog = () => {
                   <p className="text-sm text-gray-600 line-clamp-2">
                     {blog.description}
                   </p>
-                  <Link
-                    href={`/blog/${featuredBlog._id}`}
+                  <span
                     className="inline-flex items-center gap-2 text-primary font-semibold group-hover:translate-x-2 transition-transform"
                   >
                     Read More
@@ -262,7 +260,7 @@ const RecentBlog = () => {
                         d="M17 8l4 4m0 0l-4 4m4-4H3"
                       />
                     </svg>
-                  </Link>
+                  </span>
                 </div>
               </Link>
             ))}

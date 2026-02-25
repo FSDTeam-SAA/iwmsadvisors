@@ -15,7 +15,7 @@ const ServiceHero = () => {
 
         </div>
       </div>
-      <div className="container mx-auto flex min-h-[60vh] items-center justify-center px-4 py-12 md:py-20">
+      <div className="container mx-auto flex min-h-[60vh] items-center justify-center px-4 py-12 md:py-20 reveal">
         <div className="text-center">
           <h1 className="text-3xl font-bold text-white drop-shadow-lg md:text-5xl lg:text-6xl">
             Our Services

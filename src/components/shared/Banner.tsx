@@ -21,7 +21,7 @@ const Banner = () => {
       />
 
       {/* Content */}
-      <div className="relative z-10 mx-auto container flex min-h-screen items-center">
+      <div className="relative z-10 mx-auto container flex min-h-screen items-center reveal">
         <div className=" text-white">
           {/* Main Heading */}
           <h1 className="text-4xl font-semibold leading-[1.1] sm:text-5xl md:text-6xl lg:text-7xl">
@@ -52,7 +52,7 @@ const Banner = () => {
               variant="outline"
               className="h-14 rounded-md border-2 border-white/30 bg-transparent px-8 text-base font-medium text-white transition-all hover:bg-white/10 hover:border-white/50 hover:text-white"
             >
-              <Link href="#contact">Talk to an Expert</Link>
+              <Link href="/contact">Talk to an Expert</Link>
             </Button>
           </div>
         </div>
