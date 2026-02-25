@@ -1,13 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import CustomImage from "@/components/shared/CustomImage";
 
 const Navbar = () => {
-  const [activeLink, setActiveLink] = useState("#home");
+  const pathname = usePathname();
 
   const navItems = [
     { label: "Home", href: "/" },
@@ -25,17 +25,16 @@ const Navbar = () => {
 
         <nav className="hidden items-center gap-6 text-base font-medium md:flex">
           {navItems.map((item) => {
-            const isActive = activeLink === item.href;
+            const isActive = pathname === item.href;
 
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                onClick={() => setActiveLink(item.href)}
                 aria-current={isActive ? "page" : undefined}
                 className={`transition-colors ${
                   isActive
-                    ? "text-slate-900"
+                    ? "text-primary font-bold"
                     : "text-slate-700 hover:text-slate-900"
                 }`}
               >

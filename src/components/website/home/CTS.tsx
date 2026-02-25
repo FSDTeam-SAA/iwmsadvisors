@@ -16,11 +16,12 @@ const CTS = () => {
             explore how we can help transform your operations.
           </p>
           <div className="mt-5">
+
             <Button
               asChild
               className="py-6 rounded-sm bg-white  text-lg  font-bold  tracking-wide text-[#0A2463] hover:bg-slate-50"
             >
-              <Link href="#contact">Schedule a Consultation</Link>
+              <Link href="/contact">Schedule a Consultation</Link>
             </Button>
           </div>
         </div>
