@@ -129,7 +129,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-white/20 pt-6 text-xs sm:flex-row">
+        {/* <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-white/20 pt-6 text-xs sm:flex-row">
           <p className="text-white/70">
             Copyright © 2026 IWMS Advisors. All Rights Reserved.
           </p>
@@ -162,7 +162,7 @@ const Footer = () => {
               <Linkedin className="h-3.5 w-3.5" />
             </a>
           </div>
-        </div>
+        </div> */}
       </div>
     </footer>
   );
