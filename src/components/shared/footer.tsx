@@ -61,7 +61,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/case-studies" className="hover:text-white/80">
+                <Link href="/case-study" className="hover:text-white/80">
                   Case Studies
                 </Link>
               </li>
@@ -80,10 +80,10 @@ const Footer = () => {
           </div>
 
           {/* Services */}
-          <div>
-            {/* <h3 className="text-xs font-semibold uppercase tracking-wider">
+          {/* <div>
+            <h3 className="text-xs font-semibold uppercase tracking-wider">
               Services
-            </h3> */}
+            </h3>
             <ul className="mt-3 space-y-2 text-base">
               <li>
                 <Link href="#services" className="hover:text-white/80">
@@ -106,7 +106,7 @@ const Footer = () => {
                 </Link>
               </li>
             </ul>
-          </div>
+          </div> */}
 
           {/* Resources */}
           <div>

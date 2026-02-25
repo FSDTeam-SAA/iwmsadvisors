@@ -13,15 +13,15 @@ export default function Home() {
   return (
     <main className="bg-white">
       <Banner />
-      <AboutUs />
-      <Services />
-      <IWMsSolution />
-      <RealEstateFacilities />
-      <WhyChooseUs />
-      <ProvenResults />
-      <CaseStudies />
-      <BlogAndArticles />
-      <CTS />
+      <div className="reveal"><AboutUs /></div>
+      <div className="reveal"><Services /></div>
+      <div className="reveal"><IWMsSolution /></div>
+      <div className="reveal"><RealEstateFacilities /></div>
+      <div className="reveal"><WhyChooseUs /></div>
+      <div className="reveal"><ProvenResults /></div>
+      <div className="reveal"><CaseStudies /></div>
+      <div className="reveal"><BlogAndArticles /></div>
+      <div className="reveal"><CTS /></div>
     </main>
   );
 }

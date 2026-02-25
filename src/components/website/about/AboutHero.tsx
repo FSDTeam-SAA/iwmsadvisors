@@ -12,6 +12,9 @@ const AboutHero = () => {
               className="object-cover"
               priority
             />
+            <div className=' absolute inset-0 bg-black/30'>
+
+            </div>
           </div>
           <div className="container mx-auto flex min-h-[60vh] items-center justify-center px-4 py-12 md:py-20">
             <div className="text-center">

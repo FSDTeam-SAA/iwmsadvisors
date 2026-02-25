@@ -59,7 +59,7 @@ const AboutTeam = () => {
               </div>
               <div className="relative overflow-hidden w-full aspect-5/3 rounded-md sm:col-span-2">
                 <CustomImage
-                  src="/images/about4.png"
+                  src="/images/about5.jpg"
                   alt="Team workspace"
                   width={796}
                   height={410}

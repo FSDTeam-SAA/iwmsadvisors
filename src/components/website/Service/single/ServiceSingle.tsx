@@ -151,11 +151,11 @@ const ServiceSingle = ({ id }: ServiceSingleProps) => {
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
-            <Link href="/contact" className="block">
-              <Button className="w-full bg-primary hover:bg-primary/90 text-white py-6 text-lg font-semibold">
+            <Button asChild className="w-full bg-primary hover:bg-primary/90 text-white py-6 text-lg font-semibold">
+              <Link href="/contact">
                 Contact Us
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           </div>
         </div>
       </div>

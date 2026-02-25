@@ -393,19 +393,19 @@ const CareerForm = () => {
                 <span className="text-sm text-gray-600">
                   I confirm that the information provided is accurate and agree
                   to the{" "}
-                  <button
-                    type="button"
+                  <a
+                    href="#"
                     className="text-blue-600 hover:underline font-semibold"
                   >
                     privacy policy
-                  </button>{" "}
+                  </a>{" "}
                   and{" "}
-                  <button
-                    type="button"
+                  <a
+                    href="#"
                     className="text-blue-600 hover:underline font-semibold"
                   >
                     terms of service
-                  </button>
+                  </a>
                   .
                 </span>
               </label>

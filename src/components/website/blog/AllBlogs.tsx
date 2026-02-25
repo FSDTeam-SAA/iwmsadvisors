@@ -61,6 +61,7 @@ const AllBlogs = () => {
                 year: 'numeric'
               })}
               readTime="5 min read" // Placeholder as not in API
+              href={`/blog/${article._id}`}
             />
           ))}
         </div>
