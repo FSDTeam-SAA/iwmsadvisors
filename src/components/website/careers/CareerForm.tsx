@@ -18,14 +18,14 @@ const CareerForm = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
-    fullName: "",
+    name: "",
     email: "",
     phone: "",
     resume: null as File | null,
-    linkedinProfile: "",
+    resumeLink: "",
+    portfolioLink: "",
     coverLetter: "",
-    yearsOfExperience: "",
-    additionalInfo: "",
+    notes: "",
     agreedToTerms: false,
   });
 
@@ -35,7 +35,8 @@ const CareerForm = () => {
     >,
   ) => {
     const { name, value, type } = e.target;
-    const val = type === 'checkbox' ? (e.target as HTMLInputElement).checked : value;
+    const val =
+      type === "checkbox" ? (e.target as HTMLInputElement).checked : value;
     setFormData((prev) => ({
       ...prev,
       [name]: val,
@@ -57,7 +58,7 @@ const CareerForm = () => {
   };
 
   const validateForm = () => {
-    if (!formData.fullName.trim()) {
+    if (!formData.name.trim()) {
       toast.error("Please enter your full name");
       return false;
     }
@@ -80,11 +81,6 @@ const CareerForm = () => {
       return false;
     }
 
-    if (!formData.yearsOfExperience) {
-      toast.error("Please select years of experience");
-      return false;
-    }
-
     if (!formData.agreedToTerms) {
       toast.error("Please agree to the terms and privacy policy");
       return false;
@@ -104,30 +100,31 @@ const CareerForm = () => {
 
     try {
       const form = new FormData();
-      form.append("fullName", formData.fullName);
+      form.append("name", formData.name);
       form.append("email", formData.email);
       form.append("phone", formData.phone);
+      form.append("resumeLink", formData.resumeLink || "");
+      form.append("portfolioLink", formData.portfolioLink || "");
+      form.append("coverLetter", formData.coverLetter || "");
+      form.append("notes", formData.notes || "");
+      form.append("careerId", careerIdParam);
+      
       if (formData.resume) {
         form.append("resume", formData.resume);
       }
-      form.append("linkedinProfile", formData.linkedinProfile);
-      form.append("coverLetter", formData.coverLetter);
-      form.append("yearsOfExperience", formData.yearsOfExperience);
-      form.append("additionalInfo", formData.additionalInfo);
-      form.append("careerId", careerIdParam);
 
-      await postCareerApplication(form);
+      await postCareerApplication(form, careerIdParam);
 
       toast.success("Application submitted successfully!");
       setFormData({
-        fullName: "",
+        name: "",
         email: "",
         phone: "",
         resume: null,
-        linkedinProfile: "",
+        resumeLink: "",
+        portfolioLink: "",
         coverLetter: "",
-        yearsOfExperience: "",
-        additionalInfo: "",
+        notes: "",
         agreedToTerms: false,
       });
 
@@ -136,7 +133,10 @@ const CareerForm = () => {
         router.push("/career");
       }, 2000);
     } catch (error) {
-      toast.error((error as Error)?.message || "Failed to submit application. Please try again.");
+      toast.error(
+        (error as Error)?.message ||
+          "Failed to submit application. Please try again.",
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -197,8 +197,8 @@ const CareerForm = () => {
                   </label>
                   <input
                     type="text"
-                    name="fullName"
-                    value={formData.fullName}
+                    name="name"
+                    value={formData.name}
                     onChange={handleInputChange}
                     placeholder="John Doe"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent shadow-sm"
@@ -236,27 +236,6 @@ const CareerForm = () => {
                       disabled={isSubmitting}
                     />
                   </div>
-                </div>
-
-                {/* Years of Experience */}
-                <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
-                    Years of Experience <span className="text-red-600">*</span>
-                  </label>
-                  <select
-                    name="yearsOfExperience"
-                    value={formData.yearsOfExperience}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent shadow-sm"
-                    disabled={isSubmitting}
-                  >
-                    <option value="">Select experience level</option>
-                    <option value="0-1">0-1 years</option>
-                    <option value="1-3">1-3 years</option>
-                    <option value="3-5">3-5 years</option>
-                    <option value="5-10">5-10 years</option>
-                    <option value="10+">10+ years</option>
-                  </select>
                 </div>
               </div>
             </div>
@@ -322,29 +301,13 @@ const CareerForm = () => {
               </div>
             </div>
 
-            {/* Additional Information Section */}
+            {/* Cover Letter and Notes Section */}
             <div className="border-t border-gray-200 pt-8">
               <h3 className="text-xl font-bold text-gray-900 mb-6">
-                Additional Information
+                Cover Letter & Notes
               </h3>
 
               <div className="space-y-6">
-                {/* LinkedIn Profile */}
-                <div>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
-                    LinkedIn Profile
-                  </label>
-                  <input
-                    type="url"
-                    name="linkedinProfile"
-                    value={formData.linkedinProfile}
-                    onChange={handleInputChange}
-                    placeholder="https://linkedin.com/in/johndoe"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent shadow-sm"
-                    disabled={isSubmitting}
-                  />
-                </div>
-
                 {/* Cover Letter */}
                 <div>
                   <label className="block text-sm font-semibold text-gray-900 mb-2">
@@ -361,18 +324,59 @@ const CareerForm = () => {
                   />
                 </div>
 
-                {/* Additional Info */}
+                {/* Notes */}
                 <div>
                   <label className="block text-sm font-semibold text-gray-900 mb-2">
-                    Additional Information
+                    Notes
                   </label>
                   <textarea
-                    name="additionalInfo"
-                    value={formData.additionalInfo}
+                    name="notes"
+                    value={formData.notes}
                     onChange={handleInputChange}
                     placeholder="Anything else you'd like us to know?"
                     rows={3}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent shadow-sm resize-vertical"
+                    disabled={isSubmitting}
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* External Links Section */}
+            <div className="border-t border-gray-200 pt-8">
+              <h3 className="text-xl font-bold text-gray-900 mb-6">
+                External Links
+              </h3>
+
+              <div className="space-y-6">
+                {/* Resume Link */}
+                <div>
+                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                    Resume Link
+                  </label>
+                  <input
+                    type="url"
+                    name="resumeLink"
+                    value={formData.resumeLink}
+                    onChange={handleInputChange}
+                    placeholder="https://example.com/resume"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent shadow-sm"
+                    disabled={isSubmitting}
+                  />
+                </div>
+
+                {/* Portfolio Link */}
+                <div>
+                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                    Portfolio Link
+                  </label>
+                  <input
+                    type="url"
+                    name="portfolioLink"
+                    value={formData.portfolioLink}
+                    onChange={handleInputChange}
+                    placeholder="https://example.com/portfolio"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent shadow-sm"
                     disabled={isSubmitting}
                   />
                 </div>

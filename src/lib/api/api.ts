@@ -115,9 +115,9 @@ export async function getSingleCareer(id: string) {
   }
 }
 
-export async function postCareerApplication(formData: FormData) {
+export async function postCareerApplication(formData: FormData, id: string) {
   try {
-    const data = await axios.post(`${url}/career`, formData, {
+    const data = await axios.post(`${url}/career/${id}/apply`, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
