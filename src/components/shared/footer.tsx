@@ -10,13 +10,31 @@ const Footer = () => {
           {/* Logo & Description */}
           <div className="lg:col-span-2">
             <Link href="/" className="inline-flex items-center gap-2">
-              <CustomImage
-                src={"/images/footerLogo.png"}
-                width={100}
-                height={67}
-                alt="IWMS Advisors Footer Logo "
-                className="w-full h-full"
-              />
+              <picture>
+                <source
+                  media="(min-width:1280px)"
+                  srcSet="/logo/fotter-logo-xl.svg"
+                />
+                <source
+                  media="(min-width:1024px)"
+                  srcSet="/logo/fotter-logo-lg.svg"
+                />
+                <source
+                  media="(min-width:768px)"
+                  srcSet="/logo/fotter-logo-md.svg"
+                />
+                <source
+                  media="(min-width:640px)"
+                  srcSet="/logo/fotter-logo-sm.svg"
+                />
+                <CustomImage
+                  src="/logo/fotter-logo.svg"
+                  alt="IWMS Advisors Footer Logo"
+                  width={100}
+                  height={67}
+                  className="w-auto h-auto"
+                />
+              </picture>
             </Link>
             <p className="mt-3 text-sm text-white">
               We are working to create your workplace
@@ -70,7 +88,7 @@ const Footer = () => {
                   About
                 </Link>
               </li>
-             
+
               <li>
                 <Link href="/career" className="hover:text-white/80">
                   Careers
