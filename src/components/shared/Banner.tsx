@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 const Banner = () => {
   return (
-    <section id="home" className="relative h-screen w-full overflow-hidden">
+    <section id="home" className="relative h-[70vh] lg:h-screen w-full overflow-hidden">
       {/* Background Image + Gradient Overlay */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -21,8 +21,8 @@ const Banner = () => {
       />
 
       {/* Content */}
-      <div className="relative z-10 mx-auto container flex min-h-screen items-center reveal">
-        <div className=" text-white">
+      <div className="relative z-10 mx-auto container flex h-[70vh] lg:min-h-screen items-center reveal">
+        <div className=" text-white px-5 lg:px-0">
           {/* Main Heading */}
           <h1 className="text-4xl font-semibold leading-[1.1] sm:text-5xl md:text-6xl lg:text-7xl">
             Integrated IWMS
