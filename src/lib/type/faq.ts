@@ -1,6 +1,8 @@
 export interface FAQItem {
+  _id: string;
   question: string;
   answer: string;
+  __v?: number;
 }
 
 export interface FAQCategory {
@@ -16,7 +18,7 @@ export interface FAQCategory {
 export interface FAQResponse {
   success: boolean;
   message: string;
-  data: FAQCategory[];
+  data: FAQItem[];
   pagination?: {
     page: number;
     limit: number;
@@ -28,5 +30,5 @@ export interface FAQResponse {
 export interface SingleFAQResponse {
   success: boolean;
   message: string;
-  data: FAQCategory;
+  data: FAQItem;
 }
