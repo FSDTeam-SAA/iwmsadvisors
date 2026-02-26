@@ -108,7 +108,7 @@ const Navbar = () => {
             alt="IWMS Advisors Logo"
             width={240}
             height={80}
-            className="h-10 w-auto object-contain sm:h-12 md:h-14 lg:h-16"
+            className="h-10 w-auto object-contain sm:h-12 md:h-14 lg:h-16 xl:h-20"
             priority
           />
         </Link>
@@ -175,18 +175,18 @@ const Navbar = () => {
           <span className="sr-only">Toggle menu</span>
           <div className="relative h-6 w-6">
             <motion.span
-              className="absolute left-0 top-1.5 h-0.5 w-6 bg-current"
-              animate={isMenuOpen ? { rotate: 45, y: 4.5 } : { rotate: 0, y: 0 }}
+              className="absolute left-0 top-[6px] h-0.5 w-6 bg-current"
+              animate={isMenuOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
               transition={{ duration: 0.3 }}
             />
             <motion.span
-              className="absolute left-0 top-3 h-0.5 w-6 bg-current"
+              className="absolute left-0 top-[12px] h-0.5 w-6 bg-current"
               animate={isMenuOpen ? { opacity: 0 } : { opacity: 1 }}
               transition={{ duration: 0.2 }}
             />
             <motion.span
-              className="absolute left-0 top-4.5 h-0.5 w-6 bg-current"
-              animate={isMenuOpen ? { rotate: -45, y: -4.5 } : { rotate: 0, y: 0 }}
+              className="absolute left-0 top-[18px] h-0.5 w-6 bg-current"
+              animate={isMenuOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
               transition={{ duration: 0.3 }}
             />
           </div>
