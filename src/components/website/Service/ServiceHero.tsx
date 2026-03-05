@@ -1,6 +1,8 @@
 import CustomImage from "@/components/shared/CustomImage";
 
+
 const ServiceHero = () => {
+
   return (
     <section className="relative w-full">
       <div className="absolute inset-0 -z-10 overflow-hidden">
