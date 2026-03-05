@@ -18,3 +18,24 @@ export async function getAbout() {
     throw new Error((error as Error).message || "Failed to fetch FAQs");
   }
 }
+
+
+export async function getFooter() {
+  try {
+    const data = await axios.get(`${url}/footer/get`);
+    return data.data;
+  } catch (error) {
+    throw new Error((error as Error).message || "Failed to fetch FAQs");
+  }
+}
+
+export async function getFeatures() {
+  try {
+    const data = await axios.get(`${url}/features/all`);
+    return data.data;
+  } catch (error) {
+    throw new Error((error as Error).message || "Failed to fetch FAQs");
+  }
+} 
+  
+
