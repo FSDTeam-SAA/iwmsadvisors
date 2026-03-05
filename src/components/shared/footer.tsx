@@ -1,186 +1,172 @@
 import Link from "next/link";
-import { Facebook, Linkedin, Mail, Phone, Twitter } from "lucide-react";
+import { Facebook, Linkedin, Mail, Phone, Twitter, MapPin, ArrowRight, Instagram } from "lucide-react";
 import CustomImage from "@/components/shared/CustomImage";
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
+  const footerLinks = {
+    quickLinks: [
+      { name: "Home", href: "/" },
+      { name: "About Us", href: "/about" },
+      { name: "Services", href: "/services" },
+      { name: "Case Studies", href: "/case-study" },
+      { name: "Careers", href: "/career" },
+    ],
+    services: [
+      { name: "IWMS Consulting", href: "/services" },
+      { name: "IWMS Implementation", href: "/services" },
+      { name: "System Integration", href: "/services" },
+      { name: "Managed Support", href: "/services" },
+    ],
+    resources: [
+      { name: "Contact Us", href: "/contact" },
+      { name: "FAQ", href: "/faq" },
+      { name: "Privacy Policy", href: "/privacy-policy" },
+      { name: "Terms of Service", href: "/terms" },
+    ],
+  };
+
+  const socialLinks = [
+    { name: "Facebook", icon: <Facebook className="h-5 w-5" />, href: "https://facebook.com" },
+    { name: "Twitter", icon: <Twitter className="h-5 w-5" />, href: "https://twitter.com" },
+    { name: "LinkedIn", icon: <Linkedin className="h-5 w-5" />, href: "https://linkedin.com" },
+    { name: "Instagram", icon: <Instagram className="h-5 w-5" />, href: "https://instagram.com" },
+  ];
+
   return (
-    <footer className="mt-12 md:mt-16 w-full bg-[#0f66a6] text-white">
-      <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-5">
-          {/* Logo & Description */}
-          <div className="lg:col-span-2">
-            <Link href="/" className="inline-flex items-center gap-2">
+    <footer className="mt-16 w-full bg-[#0d67a9] text-white overflow-hidden relative">
+      {/* Decorative background element */}
+      <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-32 -mt-32 blur-3xl pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-64 h-64 bg-black/10 rounded-full -ml-32 -mb-32 blur-3xl pointer-events-none"></div>
+
+      <div className="container mx-auto px-4 pt-16 pb-8 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8">
+          
+          {/* Brand Section */}
+          <div className="lg:col-span-4 space-y-6">
+            <Link href="/" className="inline-block transition-transform hover:scale-105 duration-300">
               <picture>
-                <source
-                  media="(min-width:1280px)"
-                  srcSet="/logo/fotter-logo-xl.svg"
-                />
-                <source
-                  media="(min-width:1024px)"
-                  srcSet="/logo/fotter-logo-lg.svg"
-                />
-                <source
-                  media="(min-width:768px)"
-                  srcSet="/logo/fotter-logo-md.svg"
-                />
-                <source
-                  media="(min-width:640px)"
-                  srcSet="/logo/fotter-logo-sm.svg"
-                />
+                <source media="(min-width:1280px)" srcSet="/logo/fotter-logo-xl.svg" />
+                <source media="(min-width:1024px)" srcSet="/logo/fotter-logo-lg.svg" />
+                <source media="(min-width:768px)" srcSet="/logo/fotter-logo-md.svg" />
+                <source media="(min-width:640px)" srcSet="/logo/fotter-logo-sm.svg" />
                 <CustomImage
                   src="/logo/fotter-logo.svg"
                   alt="IWMS Advisors Footer Logo"
-                  width={100}
-                  height={67}
-                  className="w-auto h-auto"
+                  width={160}
+                  height={100}
+                  className="w-40 h-auto"
                 />
               </picture>
             </Link>
-            <p className="mt-3 text-sm text-white">
-              We are working to create your workplace
-              <br />
-              smarter. Built with smart city challenges
-              <br />
-              in a trusted company.
+            <p className="text-white/90 text-sm leading-relaxed max-w-sm">
+              We are working to create your workplace smarter. Built with smart city challenges in a trusted company. Empowering organizations through innovative IWMS solutions.
             </p>
-            <div className="mt-4 space-y-2 text-sm">
-              <div className="flex items-center gap-2">
-                <Mail className="h-3.5 w-3.5" />
-                <a
-                  href="mailto:info@iwmsadvisors.com"
-                  className="hover:text-white"
-                >
-                  info@iwmsadvisors.com
-                </a>
-              </div>
-              <div className="flex items-center gap-2">
-                <Phone className="h-3.5 w-3.5" />
-                <a href="tel:+14444444" className="hover:text-white">
-                  +1 444 44 44
-                </a>
+            <div className="flex flex-col space-y-3">
+              <a href="mailto:info@iwmsadvisors.com" className="flex items-center gap-3 text-sm text-white/90 hover:text-white transition-colors group w-fit">
+                <div className="bg-white/10 p-2 rounded-lg group-hover:bg-white/20 transition-colors">
+                  <Mail className="h-4 w-4" />
+                </div>
+                <span>info@iwmsadvisors.com</span>
+              </a>
+              <a href="tel:+14444444" className="flex items-center gap-3 text-sm text-white/90 hover:text-white transition-colors group w-fit">
+                <div className="bg-white/10 p-2 rounded-lg group-hover:bg-white/20 transition-colors">
+                  <Phone className="h-4 w-4" />
+                </div>
+                <span>+1 444 44 44</span>
+              </a>
+              <div className="flex items-center gap-3 text-sm text-white/90 w-fit">
+                <div className="bg-white/10 p-2 rounded-lg">
+                  <MapPin className="h-4 w-4" />
+                </div>
+                <span>123 Business Way, City, Country</span>
               </div>
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            {/* <h3 className="text-xs font-semibold uppercase tracking-wider">
+          {/* Links Sections */}
+          <div className="lg:col-span-2 space-y-6">
+            <h3 className="text-lg font-bold relative pb-2 inline-block">
               Quick Links
-            </h3> */}
-            <ul className="mt-3 space-y-2 text-base">
-              <li>
-                <Link href="/" className="hover:text-white">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link href="/services" className="hover:text-white/80">
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link href="/case-study" className="hover:text-white/80">
-                  Case Studies
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="hover:text-white/80">
-                  About
-                </Link>
-              </li>
-
-              <li>
-                <Link href="/career" className="hover:text-white/80">
-                  Careers
-                </Link>
-              </li>
+              <span className="absolute bottom-0 left-0 w-1/2 h-0.5 bg-white/30"></span>
+            </h3>
+            <ul className="space-y-3">
+              {footerLinks.quickLinks.map((link) => (
+                <li key={link.name}>
+                  <Link href={link.href} className="text-white/80 hover:text-white transition-all hover:translate-x-1 inline-flex items-center group">
+                    <ArrowRight className="h-0 w-0 group-hover:w-3 group-hover:h-3 mr-0 group-hover:mr-2 transition-all opacity-0 group-hover:opacity-100" />
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Services */}
-          {/* <div>
-            <h3 className="text-xs font-semibold uppercase tracking-wider">
-              Services
+          <div className="lg:col-span-2 space-y-6">
+            <h3 className="text-lg font-bold relative pb-2 inline-block">
+              Our Services
+              <span className="absolute bottom-0 left-0 w-1/2 h-0.5 bg-white/30"></span>
             </h3>
-            <ul className="mt-3 space-y-2 text-base">
-              <li>
-                <Link href="#services" className="hover:text-white/80">
-                  IWMS Consulting
-                </Link>
-              </li>
-              <li>
-                <Link href="#services" className="hover:text-white/80">
-                  IWMS Implementation
-                </Link>
-              </li>
-              <li>
-                <Link href="#services" className="hover:text-white/80">
-                  System Integration
-                </Link>
-              </li>
-              <li>
-                <Link href="#services" className="hover:text-white/80">
-                  Managed Support
-                </Link>
-              </li>
+            <ul className="space-y-3">
+              {footerLinks.services.map((link) => (
+                <li key={link.name}>
+                  <Link href={link.href} className="text-white/80 hover:text-white transition-all hover:translate-x-1 inline-flex items-center group">
+                    <ArrowRight className="h-0 w-0 group-hover:w-3 group-hover:h-3 mr-0 group-hover:mr-2 transition-all opacity-0 group-hover:opacity-100" />
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
-          </div> */}
+          </div>
 
-          {/* Resources */}
-          <div>
-            {/* <h3 className="text-xs font-semibold uppercase tracking-wider">
-              Contact us
-            </h3> */}
-            <ul className="mt-3 space-y-2 text-base">
-              <li>
-                <Link href="/contact" className="hover:text-white">
-                  Contact Us
-                </Link>
-              </li>
-              <li>
-                <Link href="/faq" className="hover:text-white/80">
-                  FAQ
-                </Link>
-              </li>
-            </ul>
+          <div className="lg:col-span-4 space-y-6">
+            <h3 className="text-lg font-bold relative pb-2 inline-block">
+              Newsletter
+              <span className="absolute bottom-0 left-0 w-1/2 h-0.5 bg-white/30"></span>
+            </h3>
+            <p className="text-white/80 text-sm italic">
+              Subscribe to stay updated with our latest insights.
+            </p>
+            <form className="mt-4 flex flex-col sm:flex-row gap-2">
+              <input 
+                type="email" 
+                placeholder="Your email address" 
+                className="bg-white/10 border border-white/20 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-white/40 flex-grow placeholder:text-white/50"
+              />
+              <button className="bg-white text-[#0d67a9] font-bold px-6 py-2.5 rounded-lg text-sm hover:bg-white/90 transition-all active:scale-95 whitespace-nowrap">
+                Join Now
+              </button>
+            </form>
+            <div className="pt-4">
+              <div className="flex items-center gap-4">
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-white/10 p-2.5 rounded-full hover:bg-white text-white hover:text-[#0d67a9] transition-all transform hover:-translate-y-1 active:scale-90"
+                    aria-label={social.name}
+                  >
+                    {social.icon}
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        {/* <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-white/20 pt-6 text-xs sm:flex-row">
-          <p className="text-white/70">
-            Copyright © 2026 IWMS Advisors. All Rights Reserved.
-          </p>
-          <div className="flex items-center gap-3">
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full bg-white/10 p-1.5 transition-colors hover:bg-white/20"
-              aria-label="Twitter"
-            >
-              <Twitter className="h-3.5 w-3.5" />
-            </a>
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full bg-white/10 p-1.5 transition-colors hover:bg-white/20"
-              aria-label="Facebook"
-            >
-              <Facebook className="h-3.5 w-3.5" />
-            </a>
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full bg-white/10 p-1.5 transition-colors hover:bg-white/20"
-              aria-label="LinkedIn"
-            >
-              <Linkedin className="h-3.5 w-3.5" />
-            </a>
+        {/* Divider */}
+        <div className="mt-16 border-t border-white/10 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/70">
+            <p>© {currentYear} <span className="text-white font-medium">IWMS Advisors</span>. All Rights Reserved.</p>
+            <div className="flex gap-8">
+              <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
+              <Link href="/terms" className="hover:text-white transition-colors">Terms of Use</Link>
+            </div>
           </div>
-        </div> */}
+        </div>
       </div>
     </footer>
   );

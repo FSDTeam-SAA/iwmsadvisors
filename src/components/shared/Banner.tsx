@@ -1,9 +1,20 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { useBanners } from "@/lib/hooks/useCms";
 
 const Banner = () => {
+  const { data: banners } = useBanners();
+  const banner = banners?.data?.[0];
+  const bgImage = banner?.image || "/images/banner.jpg";
+  console.log("banner", banner);
+
   return (
-    <section id="home" className="relative h-[70vh] lg:h-screen w-full overflow-hidden">
+    <section
+      id="home"
+      className="relative h-[70vh] lg:h-screen w-full overflow-hidden"
+    >
       {/* Background Image + Gradient Overlay */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -15,7 +26,7 @@ const Banner = () => {
               rgba(0, 0, 0, 0.6) 10%,
               rgba(0, 0, 0, 0) 40%
             ),
-            url('/images/banner.jpg')
+            url('${bgImage}')
           `,
         }}
       />
@@ -24,18 +35,22 @@ const Banner = () => {
       <div className="relative z-10 mx-auto container flex h-[70vh] lg:min-h-screen items-center reveal">
         <div className=" text-white px-5 lg:px-0">
           {/* Main Heading */}
-          <h1 className="text-4xl font-semibold leading-[1.1] sm:text-5xl md:text-6xl lg:text-7xl">
-            Integrated IWMS
+          <h1 className="text-3xl font-semibold leading-[1.1] sm:text-4xl lg:text  ">
+            {banner?.title || "Integrated IWMS"}
             <br />
-            <span className="text-white/90">
-              Solutions for Smarter Facilities
-            </span>
+            {/* <span className="text-white/90">
+              {banner?.subTitle || "Solutions for Smarter Facilities"}
+            </span> */}
           </h1>
 
           {/* Subtext */}
           <p className="mt-6 text-lg opacity-90 font-normal  md:text-xl text-white max-w-3xl">
-            Streamline Your Facilities With Enterprise-Grade IWMS Solutions For
-            Space, Asset, And Operations Management.
+            {banner?.subTitle || (
+              <>
+                Streamline Your Facilities With Enterprise-Grade IWMS Solutions
+                For Space, Asset, And Operations Management.
+              </>
+            )}
           </p>
 
           {/* Buttons */}
@@ -44,7 +59,9 @@ const Banner = () => {
               asChild
               className="h-14 rounded-md px-8 text-base font-medium transition-all hover:shadow-lg hover:shadow-blue-500/20"
             >
-              <Link href="#about">Learn More About Us</Link>
+              <Link href={"/about"}>
+                {banner?.btn1 || "Learn More About Us"}
+              </Link>
             </Button>
 
             <Button
@@ -52,7 +69,9 @@ const Banner = () => {
               variant="outline"
               className="h-14 rounded-md border-2 border-white/30 bg-transparent px-8 text-base font-medium text-white transition-all hover:bg-white/10 hover:border-white/50 hover:text-white"
             >
-              <Link href="/contact">Talk to an Expert</Link>
+              <Link href={"/contact"}>
+                {banner?.btn2 || "Talk to an Expert"}
+              </Link>
             </Button>
           </div>
         </div>
