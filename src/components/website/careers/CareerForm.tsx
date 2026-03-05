@@ -108,7 +108,7 @@ const CareerForm = () => {
       form.append("coverLetter", formData.coverLetter || "");
       form.append("notes", formData.notes || "");
       form.append("careerId", careerIdParam);
-      
+
       if (formData.resume) {
         form.append("resume", formData.resume);
       }

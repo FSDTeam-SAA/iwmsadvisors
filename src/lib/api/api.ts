@@ -4,7 +4,7 @@ const getBaseUrl = () => {
   return process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api/v1";
 };
 
-const url = getBaseUrl();
+export const url = getBaseUrl();
 
 export async function getServices() {
   try {
