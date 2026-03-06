@@ -19,7 +19,6 @@ export async function getAbout() {
   }
 }
 
-
 export async function getFooter() {
   try {
     const data = await axios.get(`${url}/footer/get`);
@@ -36,6 +35,40 @@ export async function getFeatures() {
   } catch (error) {
     throw new Error((error as Error).message || "Failed to fetch FAQs");
   }
-} 
-  
+}
 
+export async function getMission() {
+  try {
+    const data = await axios.get(`${url}/mission/all`);
+    return data.data;
+  } catch (error) {
+    throw new Error((error as Error).message || "Failed to fetch FAQs");
+  }
+}
+
+export async function getVision() {
+  try {
+    const data = await axios.get(`${url}/vision/all`);
+    return data.data;
+  } catch (error) {
+    throw new Error((error as Error).message || "Failed to fetch FAQs");
+  }
+}
+
+export async function getCertifications() {
+  try {
+    const data = await axios.get(`${url}/certifications/all`);
+    return data.data;
+  } catch (error) {
+    throw new Error((error as Error).message || "Failed to fetch FAQs");
+  }
+}
+
+export async function getExpertise() {
+  try {
+    const data = await axios.get(`${url}/expertise/all`);
+    return data.data;
+  } catch (error) {
+    throw new Error((error as Error).message || "Failed to fetch FAQs");
+  }
+}
