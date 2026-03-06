@@ -1,7 +1,16 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import { getAbout, getBanners, getFeatures, getFooter } from "../api/cms";
+import {
+  getAbout,
+  getBanners,
+  getCertifications,
+  getExpertise,
+  getFeatures,
+  getFooter,
+  getMission,
+  getVision,
+} from "../api/cms";
 
 export function useBanners() {
   return useQuery({
@@ -31,5 +40,33 @@ export function useFeatures() {
   return useQuery({
     queryKey: ["features"],
     queryFn: () => getFeatures(),
+  });
+}
+
+export function useMission() {
+  return useQuery({
+    queryKey: ["mission"],
+    queryFn: () => getMission(),
+  });
+}
+
+export function useVision() {
+  return useQuery({
+    queryKey: ["vision"],
+    queryFn: () => getVision(),
+  });
+}
+
+export function useCertifications() {
+  return useQuery({
+    queryKey: ["certifications"],
+    queryFn: () => getCertifications(),
+  });
+}
+
+export function useExpertise() {
+  return useQuery({
+    queryKey: ["expertise"],
+    queryFn: () => getExpertise(),
   });
 }

@@ -1,7 +1,82 @@
+"use client";
+
 import CustomImage from "@/components/shared/CustomImage";
+import {
+  useCertifications,
+  useExpertise,
+  useMission,
+  useVision,
+} from "@/lib/hooks/useCms";
 import { Award, Briefcase, CheckCircle, Lock } from "lucide-react";
 
+type SectionItem = {
+  _id?: string;
+  title?: string;
+  subtitle?: string;
+  description1?: string;
+  description2?: string;
+  description3?: string;
+  description?: string;
+  image?: string;
+};
+
 const AboutTeam = () => {
+  const { data: missionData } = useMission();
+  const { data: visionData } = useVision();
+  const { data: certificationsData } = useCertifications();
+  const { data: expertiseData } = useExpertise();
+
+  const missions: SectionItem[] = Array.isArray(missionData?.data)
+    ? missionData.data
+    : missionData?.data
+      ? [missionData.data]
+      : [];
+
+  const visions: SectionItem[] = Array.isArray(visionData?.data)
+    ? visionData.data
+    : visionData?.data
+      ? [visionData.data]
+      : [];
+
+  const mission: SectionItem | undefined = missions[0];
+  const vision: SectionItem | undefined = visions[0];
+
+  const certifications: SectionItem[] = Array.isArray(certificationsData?.data)
+    ? certificationsData.data
+    : certificationsData?.data
+      ? [certificationsData.data]
+      : [];
+
+  const expertises: SectionItem[] = Array.isArray(expertiseData?.data)
+    ? expertiseData.data
+    : expertiseData?.data
+      ? [expertiseData.data]
+      : [];
+
+  const certificationCards: string[] =
+    certifications.length === 1
+      ? [
+          certifications[0]?.description1,
+          certifications[0]?.description2,
+          certifications[0]?.description3,
+        ].filter((item): item is string => Boolean(item))
+      : certifications
+          .map((item) => item.title)
+          .filter((item): item is string => Boolean(item))
+          .slice(0, 3);
+
+  const expertiseCards: string[] =
+    expertises.length === 1
+      ? [
+          expertises[0]?.description1,
+          expertises[0]?.description2,
+          expertises[0]?.description3,
+        ].filter((item): item is string => Boolean(item))
+      : expertises
+          .map((item) => item.title)
+          .filter((item): item is string => Boolean(item))
+          .slice(0, 3);
+
   return (
     <div className="w-full bg-white">
       {/* Hero Section */}
@@ -98,38 +173,69 @@ const AboutTeam = () => {
       {/* Mission & Vision */}
       <section className="w-full bg-white py-12">
         <div className="container mx-auto w-full px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-8 md:grid-cols-2">
-            <div className="rounded-md border border-slate-200 bg-slate-50 p-6">
-              <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-md bg-[#0f66a6]/10 text-[#0f66a6]">
-                <CheckCircle className="h-5 w-5" />
-              </div>
-              <h3 className="text-xl font-semibold text-slate-900">
-                Our Mission
-              </h3>
-              <p className="mt-3 text-base text-slate-600">
-                To empower organizations by delivering innovative IWMS solutions
-                that streamline operations, enhance productivity, and create
-                sustainable workplace environments. We partner with our clients
-                to transform facility management into a strategic business
-                advantage.
-              </p>
+          {mission || vision ? (
+            <div className="grid gap-8 md:grid-cols-2">
+              {mission ? (
+                <div className="rounded-md border border-slate-200 bg-slate-50 p-6">
+                  <div className="flex items-center gap-4">
+
+                  {mission.image ? (
+                    <div className="mb-4 overflow-hidden rounded-md">
+                      <CustomImage
+                        src={mission.image}
+                        alt={mission.title || "Mission image"}
+                        width={800}
+                        height={450}
+                        className="h-auto w-full object-cover"
+                      />
+                    </div>
+                  ) : null}
+                  <div className=" inline-flex h-10 w-10 items-center justify-center rounded-md bg-[#0f66a6]/10 text-[#0f66a6]">
+                    <CheckCircle className="h-5 w-5" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-slate-900">
+                    {mission.title}
+                  </h3>
+                  </div>
+                  <p className="mt-3 text-base text-slate-600">
+                    {mission.description}
+                  </p>
+                </div>
+              ) : null}
+
+              {vision ? (
+                <div className="rounded-md border border-slate-200 bg-slate-50 p-6">
+                  <div className="flex items-center gap-4">
+
+                  {vision.image ? (
+                    <div className="mb-4 overflow-hidden rounded-md">
+                      <CustomImage
+                        src={vision.image}
+                        alt={vision.title || "Vision image"}
+                        width={800}
+                        height={450}
+                        className="h-auto w-full object-cover"
+                      />
+                    </div>
+                  ) : null}
+                  <div className=" inline-flex h-10 w-10 items-center justify-center rounded-md bg-[#0f66a6]/10 text-[#0f66a6]">
+                    <Briefcase className="h-5 w-5" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-slate-900">
+                    {vision.title}
+                  </h3>
+                  </div>
+                  <p className="mt-3 text-base text-slate-600">
+                    {vision.description}
+                  </p>
+                </div>
+              ) : null}
             </div>
-            <div className="rounded-md border border-slate-200 bg-slate-50 p-6">
-              <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-md bg-[#0f66a6]/10 text-[#0f66a6]">
-                <Briefcase className="h-5 w-5" />
-              </div>
-              <h3 className="text-xl font-semibold text-slate-900">
-                Our Vision
-              </h3>
-              <p className="mt-3 text-base text-slate-600">
-                To be the leading provider of integrated workplace management
-                solutions, recognized globally for our expertise, innovation,
-                and commitment to customer success. We envision a world where
-                technology and people work together seamlessly to optimize
-                facilities.
-              </p>
-            </div>
-          </div>
+          ) : (
+            <p className="text-center text-base text-slate-500">
+              You have not this section.
+            </p>
+          )}
         </div>
       </section>
 
@@ -193,69 +299,62 @@ const AboutTeam = () => {
       {/* Certifications */}
       <section className="w-full bg-white py-12">
         <div className="container mx-auto w-full px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold text-slate-900">
-              Certifications
-            </h2>
-            <p className="mt-2 text-base text-slate-600">
-              Industry recognition and compliance certifications
+          {certifications.length > 0 ? (
+            <>
+              <div className="text-center">
+                <h2 className="text-3xl font-bold text-slate-900">
+                  Certifications
+                </h2>
+                <p className="mt-2 text-base text-slate-600">
+                  {certifications[0]?.subtitle}
+                </p>
+              </div>
+              <div className="mt-10 grid gap-6 md:grid-cols-3">
+                {certificationCards.map((text, index) => (
+                  <div
+                    key={`${text}-${index}`}
+                    className="rounded-md border border-slate-200 bg-slate-50 p-6 text-center"
+                  >
+                    <h3 className="font-semibold text-[#0f66a6]">{text}</h3>
+                  </div>
+                ))}
+              </div>
+            </>
+          ) : (
+            <p className="text-center text-base text-slate-500">
+              You have not this section.
             </p>
-          </div>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            <div className="rounded-md border border-slate-200 bg-slate-50 p-6 text-center">
-              <h3 className="font-semibold text-slate-900">
-                ISO 27001 Certified
-              </h3>
-              <p className="mt-2 text-sm text-slate-600">
-                Information Security Management
-              </p>
-            </div>
-            <div className="rounded-md border border-slate-200 bg-slate-50 p-6 text-center">
-              <h3 className="font-semibold text-slate-900">
-                IBM Maximo Certified Specialist
-              </h3>
-              <p className="mt-2 text-sm text-slate-600">
-                Enterprise asset management platform
-              </p>
-            </div>
-            <div className="rounded-md border border-slate-200 bg-slate-50 p-6 text-center">
-              <h3 className="font-semibold text-slate-900">
-                IBM TRIRIGA Certified Consultant
-              </h3>
-              <p className="mt-2 text-sm text-slate-600">
-                Real estate and facilities management
-              </p>
-            </div>
-          </div>
+          )}
         </div>
       </section>
 
       {/* Expertise */}
-      <section className="w-full bg-slate-50 py-12">
+      <section className="w-full  py-14 md:py-16">
         <div className="container mx-auto w-full px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold text-slate-900">Expertise</h2>
-            <p className="mt-2 text-base text-slate-600">
-              Specialized skills across key domains
+          {expertises.length > 0 ? (
+            <>
+              <div className="text-center">
+                <h2 className="text-4xl font-bold text-slate-900">Expertise</h2>
+                <p className="mt-2 text-sm text-slate-700">
+                  {expertises[0]?.subtitle}
+                </p>
+              </div>
+              <div className="mt-10 grid gap-6 md:grid-cols-3">
+                {expertiseCards.map((text, index) => (
+                  <div
+                    key={`${text}-${index}`}
+                    className="flex min-h-24 items-center justify-center rounded-md  px-6 py-7 text-center"
+                  >
+                    <h3 className="font-semibold text-[#0f66a6]">{text}</h3>
+                  </div>
+                ))}
+              </div>
+            </>
+          ) : (
+            <p className="text-center text-base text-slate-500">
+              You have not this section.
             </p>
-          </div>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            <div className="rounded-md bg-white p-6 text-center">
-              <h3 className="font-semibold text-slate-900">
-                Maximo Partner Certification
-              </h3>
-            </div>
-            <div className="rounded-md bg-white p-6 text-center">
-              <h3 className="font-semibold text-slate-900">
-                ITIL Service Management
-              </h3>
-            </div>
-            <div className="rounded-md bg-white p-6 text-center">
-              <h3 className="font-semibold text-slate-900">
-                Certified Energy Manager (CEM)
-              </h3>
-            </div>
-          </div>
+          )}
         </div>
       </section>
     </div>
