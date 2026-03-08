@@ -1,3 +1,4 @@
+"use client";
 import CustomImage from "@/components/shared/CustomImage";
 import { useHero } from "@/lib/hooks/useCms";
 import React from "react";
