@@ -26,7 +26,7 @@ type FeaturesResponse = {
 
 const IWMsSolution = () => {
   const { data } = useFeatures();
-  const featureSection = (data as FeaturesResponse | undefined)?.data?.[1];
+  const featureSection = (data as FeaturesResponse | undefined)?.data?.[0];
 
   const items =
     featureSection?.items
@@ -50,21 +50,21 @@ const IWMsSolution = () => {
           {items.map((item) => (
             <div
               key={`${item.order}-${item.title}`}
-              className="flex flex-col items-center text-center"
+              className="group flex flex-col items-center p-6 rounded-2xl transition-all duration-300 hover:bg-white/10"
             >
-              <div className="flex items-center justify-center p-4 rounded-full bg-white text-[#0f66a6]">
+              <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-white text-[#0f66a6] transition-transform duration-300 group-hover:scale-110 shadow-lg">
                 <CustomImage
                   src={item.icon}
                   alt={item.title}
-                  width={32}
-                  height={32}
-                  className="h-8 w-8 object-contain"
+                  width={40}
+                  height={40}
+                  className="h-10 w-10 object-contain"
                 />
               </div>
-              <h3 className="mt-4 text-2xl leading-[120%] font-semibold">
+              <h3 className="mt-6 text-xl leading-tight font-bold text-center">
                 {item.title}
               </h3>
-              <p className="mt-3 text-base font-normal leading-[120%] text-white">
+              <p className="mt-3 text-sm font-light leading-relaxed text-blue-50/80 text-center">
                 {item.description}
               </p>
             </div>
