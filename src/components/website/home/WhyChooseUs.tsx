@@ -25,7 +25,7 @@ type FeaturesResponse = {
 
 const WhyChooseUs = () => {
   const { data } = useFeatures();
-  const featureSection = (data as FeaturesResponse | undefined)?.data?.[0];
+  const featureSection = (data as FeaturesResponse | undefined)?.data?.[1];
 
   const items =
     featureSection?.items
@@ -49,21 +49,21 @@ const WhyChooseUs = () => {
           {items.map((item) => (
             <div
               key={`${item.order}-${item.title}`}
-              className="flex flex-col items-center text-center"
+              className="group flex flex-col items-center p-6 rounded-full transition-all duration-300 hover:bg-white/10"
             >
-              <div className="flex items-center justify-center p-4 rounded-full bg-[#3173a3] text-white">
+              <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-white/10 text-white transition-transform duration-300 group-hover:scale-110 group-hover:bg-white/20">
                 <CustomImage
                   src={item.icon}
                   alt={item.title}
-                  width={32}
-                  height={32}
-                  className="h-8 w-8 object-contain"
+                  width={20}
+                  height={20}
+                  className="h-10 w-10 object-cover rounded-full  "
                 />
               </div>
-              <h3 className="mt-4 text-base leading-[120%] font-semibold">
+              <h3 className="mt-6 text-xl leading-tight font-bold">
                 {item.title}
               </h3>
-              <p className="mt-3 text-base font-normal leading-[120%] text-white">
+              <p className="mt-3 text-sm font-light leading-relaxed text-blue-50/80">
                 {item.description}
               </p>
             </div>

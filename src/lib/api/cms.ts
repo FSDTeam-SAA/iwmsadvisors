@@ -72,3 +72,34 @@ export async function getExpertise() {
     throw new Error((error as Error).message || "Failed to fetch FAQs");
   }
 }
+
+
+// services here
+export async function getHero() {
+  try {
+    const data = await axios.get(`${url}/hero/all`);
+    return data.data;
+  } catch (error) {
+    throw new Error((error as Error).message || "Failed to fetch FAQs");
+  }
+}
+
+// translation
+export async function getTranslations() {
+  try {
+    const data = await axios.get(`${url}/transform/all`);
+    return data.data;
+  } catch (error) {
+    throw new Error((error as Error).message || "Failed to fetch FAQs");
+  }
+}
+
+//number
+export async function getNumbers() {
+  try {
+    const data = await axios.get(`${url}/number/get`);
+    return data.data;
+  } catch (error) {
+    throw new Error((error as Error).message || "Failed to fetch FAQs");
+  }
+}
