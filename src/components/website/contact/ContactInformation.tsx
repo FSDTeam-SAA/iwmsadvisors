@@ -1,6 +1,45 @@
+"use client";
+
+import { useContactInformation } from "@/lib/hooks/useCms";
 import { Mail, MapPin, Phone } from "lucide-react";
 
 const ContactInformation = () => {
+  const { data, isLoading } = useContactInformation();
+
+  if (isLoading) {
+    return (
+      <section className="w-full bg-white py-12">
+        <div className="container mx-auto w-full px-4 sm:px-6 lg:px-8">
+          <div className="animate-pulse flex flex-col md:flex-row gap-8">
+            <div className="bg-slate-200 h-64 md:h-80 w-full rounded-md"></div>
+            <div className="flex-1 space-y-4 py-1">
+              <div className="h-4 bg-slate-200 rounded w-3/4"></div>
+              <div className="space-y-3">
+                <div className="h-4 bg-slate-200 rounded"></div>
+                <div className="h-4 bg-slate-200 rounded w-5/6"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  const information = data?.data;
+
+  const defaultMap =
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.585108398418!2d-81.51268402340331!3d41.45934529148427!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88310240d436e76d%3A0x6b2e3e5d0a6a3b0!2s26250%20Commerce%20Park%20Rd%2C%20Beachwood%2C%20OH%2044122%2C%20USA!5e0!3m2!1sen!2sbd!4v1707960000000!5m2!1sen!2sbd";
+
+  const getValidMapUrl = (url?: string) => {
+    try {
+      if (!url) return defaultMap;
+      new URL(url);
+      return url;
+    } catch {
+      return defaultMap;
+    }
+  };
+
   return (
     <section className="w-full bg-white py-12">
       <div className="container mx-auto w-full px-4 sm:px-6 lg:px-8">
@@ -8,7 +47,7 @@ const ContactInformation = () => {
           {/* Map */}
           <div className="relative h-64 overflow-hidden rounded-md md:h-80 group">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.585108398418!2d-81.51268402340331!3d41.45934529148427!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88310240d436e76d%3A0x6b2e3e5d0a6a3b0!2s26250%20Commerce%20Park%20Rd%2C%20Beachwood%2C%20OH%2044122%2C%20USA!5e0!3m2!1sen!2sbd!4v1707960000000!5m2!1sen!2sbd"
+              src={getValidMapUrl(information?.mapUrl)}
               width="100%"
               height="100%"
               style={{ border: 0 }}
@@ -22,11 +61,11 @@ const ContactInformation = () => {
           {/* Contact Information */}
           <div>
             <h2 className="text-3xl font-bold text-slate-900">
-              Contact Information
+              {information?.title || "Contact Information"}
             </h2>
             <p className="mt-2 text-base text-slate-600">
-              For all other ways to reach us, including email, phone, and
-              answers you need quickly and reliably.
+              {information?.description ||
+                "For all other ways to reach us, including email, phone, and answers you need quickly and reliably."}
             </p>
 
             <div className="mt-8 space-y-6">
@@ -39,9 +78,12 @@ const ContactInformation = () => {
                   <h3 className="text-base font-semibold text-slate-900">
                     Email
                   </h3>
-                  <p className="mt-1 text-base text-slate-600">
-                    info@iwmsadvisors.com
-                  </p>
+                  <a
+                    href={`mailto:${information?.email}`}
+                    className="mt-1 text-base text-slate-600 hover:text-[#086646] transition-colors"
+                  >
+                    {information?.email || "info@iwmsadvisors.com"}
+                  </a>
                 </div>
               </div>
 
@@ -54,9 +96,12 @@ const ContactInformation = () => {
                   <h3 className="text-base font-semibold text-slate-900">
                     Phone
                   </h3>
-                  <p className="mt-1 text-base text-slate-600">
-                    +1 (555) 123-4505
-                  </p>
+                  <a
+                    href={`tel:${information?.phone}`}
+                    className="mt-1 text-base text-slate-600 hover:text-[#086646] transition-colors"
+                  >
+                    {information?.phone || "+1 (555) 123-4505"}
+                  </a>
                 </div>
               </div>
 
@@ -70,7 +115,8 @@ const ContactInformation = () => {
                     Address
                   </h3>
                   <p className="mt-1 text-base text-slate-600">
-                    26250 Commerce Park Rd, Cleveland, OH 44122
+                    {information?.address ||
+                      "26250 Commerce Park Rd, Cleveland, OH 44122"}
                   </p>
                 </div>
               </div>

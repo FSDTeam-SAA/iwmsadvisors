@@ -103,3 +103,47 @@ export async function getNumbers() {
     throw new Error((error as Error).message || "Failed to fetch FAQs");
   }
 }
+export async function getContactInformation() {
+  try {
+    const data = await axios.get(`${url}/information/get`);
+    return data.data;
+  } catch (error) {
+    throw new Error((error as Error).message || "Failed to fetch Contact Information");
+  }
+}
+
+export async function getConsultants() {
+  try {
+    const data = await axios.get(`${url}/consultant/all`);
+    return data.data;
+  } catch (error) {
+    throw new Error((error as Error).message || "Failed to fetch Consultants");
+  }
+}
+
+export async function getStrengths() {
+  try {
+    const data = await axios.get(`${url}/strength/all`);
+    return data.data;
+  } catch (error) {
+    throw new Error((error as Error).message || "Failed to fetch Strengths");
+  }
+}
+
+export async function getItems() {
+  try {
+    const data = await axios.get(`${url}/items/all`);
+    return data.data;
+  } catch (error) {
+    throw new Error((error as Error).message || "Failed to fetch Items");
+  }
+}
+
+export async function getNavbar() {
+  try {
+    const data = await axios.get(`${url}/navbar/get`);
+    return data.data;
+  } catch (error) {
+    throw new Error((error as Error).message || "Failed to fetch Navbar");
+  }
+}

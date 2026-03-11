@@ -4,10 +4,12 @@ import React, { useState } from "react";
 import { useCareers } from "@/lib/hooks/useCareer";
 import { Career } from "@/lib/type/career";
 import Link from "next/link";
+import UnknownRoleModal from "./UnknownRoleModal";
 
 const Careers = () => {
   const { data: careersData, isLoading, error } = useCareers();
   const [searchTerm, setSearchTerm] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const careers = careersData?.data || [];
 
@@ -63,7 +65,8 @@ const Careers = () => {
             Join Our Team
           </h1>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Explore exciting career opportunities and help us transform workplace and operational efficiency and excellence.
+            Explore exciting career opportunities and help us transform
+            workplace and operational efficiency and excellence.
           </p>
         </div>
 
@@ -154,11 +157,44 @@ const Careers = () => {
                     </td>
                   </tr>
                 )}
+
+                {/* Extra row: Unknown Role */}
+                <tr className="hover:bg-gray-50 transition-colors group border-t-2 border-dashed border-gray-300">
+                  <td className="px-6 py-4 text-sm font-medium text-gray-900">
+                    <div>
+                      <p className="font-semibold">Unknown Role</p>
+                      <p className="text-gray-500 text-xs">
+                        Don&apos;t see a fitting role?
+                      </p>
+                    </div>
+                  </td>
+                  <td className="px-6 py-4 text-sm text-gray-500">—</td>
+                  <td className="px-6 py-4 text-sm text-gray-500">—</td>
+                  <td className="px-6 py-4 text-sm">
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
+                      Open
+                    </span>
+                  </td>
+                  <td className="px-6 py-4 text-center">
+                    <button
+                      onClick={() => setIsModalOpen(true)}
+                      className="inline-flex items-center px-4 py-2 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-primary/80 transition-colors cursor-pointer"
+                    >
+                      Apply
+                    </button>
+                  </td>
+                </tr>
               </tbody>
             </table>
           </div>
         </div>
       </div>
+
+      {/* Unknown Role Application Modal */}
+      <UnknownRoleModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </section>
   );
 };
