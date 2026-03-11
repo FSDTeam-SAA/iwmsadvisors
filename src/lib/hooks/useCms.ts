@@ -5,12 +5,17 @@ import {
   getAbout,
   getBanners,
   getCertifications,
+  getConsultants,
+  getContactInformation,
   getExpertise,
   getFeatures,
   getFooter,
   getHero,
+  getItems,
   getMission,
+  getNavbar,
   getNumbers,
+  getStrengths,
   getTranslations,
   // getServices,
   getVision,
@@ -83,7 +88,6 @@ export function useHero() {
   });
 }
 
-
 // export transformation function for services
 
 export function useTranslations() {
@@ -98,5 +102,39 @@ export function useNumbers() {
   return useQuery({
     queryKey: ["numbers"],
     queryFn: () => getNumbers(),
+  });
+}
+export function useContactInformation() {
+  return useQuery({
+    queryKey: ["contactInformation"],
+    queryFn: () => getContactInformation(),
+  });
+}
+
+export function useConsultants() {
+  return useQuery({
+    queryKey: ["consultants"],
+    queryFn: () => getConsultants(),
+  });
+}
+
+export function useStrengths() {
+  return useQuery({
+    queryKey: ["strengths"],
+    queryFn: () => getStrengths(),
+  });
+}
+
+export function useItems() {
+  return useQuery({
+    queryKey: ["items"],
+    queryFn: () => getItems(),
+  });
+}
+
+export function useNavbar() {
+  return useQuery({
+    queryKey: ["navbar"],
+    queryFn: () => getNavbar(),
   });
 }

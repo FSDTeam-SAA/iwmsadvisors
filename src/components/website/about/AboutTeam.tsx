@@ -4,11 +4,14 @@ import CustomImage from "@/components/shared/CustomImage";
 import {
   useCertifications,
   useExpertise,
+  useItems,
   useMission,
   useNumbers,
+  useStrengths,
   useTranslations,
   useVision,
 } from "@/lib/hooks/useCms";
+import { IItem } from "@/lib/type/item";
 import { Award, Briefcase, CheckCircle, Lock } from "lucide-react";
 
 type SectionItem = {
@@ -44,6 +47,8 @@ const AboutTeam = () => {
   const { data: translationsData } = useTranslations();
   const { data: expertiseData } = useExpertise();
   const { data: numbersData } = useNumbers();
+  const { data: strengthsData } = useStrengths();
+  const { data: itemsData } = useItems();
 
   const missions: SectionItem[] = Array.isArray(missionData?.data)
     ? missionData.data
@@ -118,8 +123,23 @@ const AboutTeam = () => {
     { value: "15+", label: "Years Experience" },
     { value: "500+", label: "Successful Projects" },
     { value: "50+", label: "Expert Team" },
-    { value: "99%", label: "Client Satisfaction" },
+    { value: "99%", label: "ClientSatisfaction" },
   ];
+
+  const strengthsTitle =
+    strengthsData?.data?.[0]?.title || "Our Core Strengths";
+  const strengthsSubtitle =
+    strengthsData?.data?.[0]?.subtitle ||
+    "The foundation of our success rests on these core competencies";
+
+  const items = itemsData?.data || [];
+
+  const iconMap: Record<number, typeof CheckCircle> = {
+    0: CheckCircle,
+    1: Award,
+    2: Briefcase,
+    3: Lock,
+  };
 
   return (
     <div className="w-full bg-white">
@@ -250,54 +270,93 @@ const AboutTeam = () => {
         <div className="container mx-auto w-full px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-3xl font-bold text-slate-900">
-              Our Core Strengths
+              {strengthsTitle}
             </h2>
-            <p className="mt-2 text-base text-slate-600">
-              The foundation of our success rests on these core competencies
-            </p>
+            <p className="mt-2 text-base text-slate-600">{strengthsSubtitle}</p>
           </div>
           <div className="mt-10 grid gap-6 md:grid-cols-4">
-            <div className="rounded-md bg-white p-6 text-center">
-              <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-md bg-[#0f66a6]/10 text-[#0f66a6]">
-                <CheckCircle className="h-5 w-5" />
-              </div>
-              <h3 className="font-semibold text-slate-900">IWMS Expertise</h3>
-              <p className="mt-2 text-sm text-slate-600">
-                Deep technical and functional knowledge of leading IWMS
-                platforms
-              </p>
-            </div>
-            <div className="rounded-md bg-white p-6 text-center">
-              <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-md bg-[#0f66a6]/10 text-[#0f66a6]">
-                <Award className="h-5 w-5" />
-              </div>
-              <h3 className="font-semibold text-slate-900">
-                Certified Expertise
-              </h3>
-              <p className="mt-2 text-sm text-slate-600">
-                Industry-recognized certifications and continuous professional
-                development
-              </p>
-            </div>
-            <div className="rounded-md bg-white p-6 text-center">
-              <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-md bg-[#0f66a6]/10 text-[#0f66a6]">
-                <Briefcase className="h-5 w-5" />
-              </div>
-              <h3 className="font-semibold text-slate-900">Smart Technology</h3>
-              <p className="mt-2 text-sm text-slate-600">
-                Integration with IoT, analytics, and automation for intelligent
-                operations
-              </p>
-            </div>
-            <div className="rounded-md bg-white p-6 text-center">
-              <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-md bg-[#0f66a6]/10 text-[#0f66a6]">
-                <Lock className="h-5 w-5" />
-              </div>
-              <h3 className="font-semibold text-slate-900">Trust & Security</h3>
-              <p className="mt-2 text-sm text-slate-600">
-                Enterprise-grade security and compliance with industry standards
-              </p>
-            </div>
+            {items.length > 0 ? (
+              items.map((item: IItem, index: number) => {
+                const IconComponent = iconMap[index % 4] || CheckCircle;
+                return (
+                  <div
+                    key={item._id}
+                    className="rounded-md bg-white p-6 text-center"
+                  >
+                    <div className="mb-3 inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#0f66a6]/10 text-[#0f66a6]">
+                      {item.image ? (
+                        <CustomImage
+                          src={item.image}
+                          alt={item.title}
+                          width={20}
+                          height={20}
+                          className="h-8 rounded-full w-8 object-cover"
+                        />
+                      ) : (
+                        <IconComponent className="h-5 w-5" />
+                      )}
+                    </div>
+                    <h3 className="font-semibold text-slate-900">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 text-sm text-slate-600">
+                      {item.subtitle}
+                    </p>
+                  </div>
+                );
+              })
+            ) : (
+              <>
+                <div className="rounded-md bg-white p-6 text-center">
+                  <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-md bg-[#0f66a6]/10 text-[#0f66a6]">
+                    <CheckCircle className="h-5 w-5" />
+                  </div>
+                  <h3 className="font-semibold text-slate-900">
+                    IWMS Expertise
+                  </h3>
+                  <p className="mt-2 text-sm text-slate-600">
+                    Deep technical and functional knowledge of leading IWMS
+                    platforms
+                  </p>
+                </div>
+                <div className="rounded-md bg-white p-6 text-center">
+                  <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-md bg-[#0f66a6]/10 text-[#0f66a6]">
+                    <Award className="h-5 w-5" />
+                  </div>
+                  <h3 className="font-semibold text-slate-900">
+                    Certified Expertise
+                  </h3>
+                  <p className="mt-2 text-sm text-slate-600">
+                    Industry-recognized certifications and continuous
+                    professional development
+                  </p>
+                </div>
+                <div className="rounded-md bg-white p-6 text-center">
+                  <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-md bg-[#0f66a6]/10 text-[#0f66a6]">
+                    <Briefcase className="h-5 w-5" />
+                  </div>
+                  <h3 className="font-semibold text-slate-900">
+                    Smart Technology
+                  </h3>
+                  <p className="mt-2 text-sm text-slate-600">
+                    Integration with IoT, analytics, and automation for
+                    intelligent operations
+                  </p>
+                </div>
+                <div className="rounded-md bg-white p-6 text-center">
+                  <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-md bg-[#0f66a6]/10 text-[#0f66a6]">
+                    <Lock className="h-5 w-5" />
+                  </div>
+                  <h3 className="font-semibold text-slate-900">
+                    Trust & Security
+                  </h3>
+                  <p className="mt-2 text-sm text-slate-600">
+                    Enterprise-grade security and compliance with industry
+                    standards
+                  </p>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </section>
