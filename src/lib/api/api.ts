@@ -128,6 +128,19 @@ export async function postCareerApplication(formData: FormData, id: string) {
   }
 }
 
+export async function postApplication(formData: FormData) {
+  try {
+    const data = await axios.post(`${url}/application/create`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    return data.data;
+  } catch (error) {
+    throw new Error((error as Error).message || "Failed to submit application");
+  }
+}
+
 // FAQ Endpoints
 export async function getFAQs() {
   try {

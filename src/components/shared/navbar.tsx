@@ -7,6 +7,7 @@ import { motion, AnimatePresence, Variants } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
 import CustomImage from "@/components/shared/CustomImage";
+import { useNavbar } from "@/lib/hooks/useCms";
 
 type NavItem = {
   label: string;
@@ -64,6 +65,9 @@ const Navbar = () => {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { data: navbarData } = useNavbar();
+
+  const logo = navbarData?.data?.logo || "/logo/logo-xl.svg";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -94,17 +98,21 @@ const Navbar = () => {
   };
 
   return (
-    <header 
+    <header
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-        isScrolled 
-          ? "border-b border-slate-200 bg-white/90 backdrop-blur-md py-2 shadow-sm" 
+        isScrolled
+          ? "border-b border-slate-200 bg-white/90 backdrop-blur-md py-2 shadow-sm"
           : "bg-white py-4"
       }`}
     >
       <div className="container mx-auto flex w-full items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="relative z-[60] flex items-center gap-2" onClick={closeMenu}>
+        <Link
+          href="/"
+          className="relative z-[60] flex items-center gap-2"
+          onClick={closeMenu}
+        >
           <CustomImage
-            src="/logo/logo-xl.svg"
+            src={logo}
             alt="IWMS Advisors Logo"
             width={240}
             height={80}
@@ -186,7 +194,9 @@ const Navbar = () => {
             />
             <motion.span
               className="absolute left-0 top-[18px] h-0.5 w-6 bg-current"
-              animate={isMenuOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
+              animate={
+                isMenuOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }
+              }
               transition={{ duration: 0.3 }}
             />
           </div>
@@ -204,7 +214,6 @@ const Navbar = () => {
             exit="closed"
             className="fixed inset-0 z-50 bg-white md:hidden"
           >
-
             <motion.nav
               className="flex h-full flex-col gap-1 overflow-y-auto px-4 pb-6 pt-24 sm:px-6"
               initial="closed"
@@ -243,11 +252,8 @@ const Navbar = () => {
                   </motion.div>
                 );
               })}
-              
-              <motion.div
-                variants={menuItemVariants}
-                className="mt-6"
-              >
+
+              <motion.div variants={menuItemVariants} className="mt-6">
                 <Button
                   className="h-14 w-full rounded-2xl text-sm font-bold uppercase tracking-widest shadow-xl"
                   asChild
