@@ -49,7 +49,7 @@ const WhyChooseUs = () => {
           {items.map((item) => (
             <div
               key={`${item.order}-${item.title}`}
-              className="group flex flex-col items-center p-6 rounded-full transition-all duration-300 hover:bg-white/10"
+              className="group flex flex-col items-center p-6 rounded-sm transition-all duration-300 hover:bg-white/10"
             >
               <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-white/10 text-white transition-transform duration-300 group-hover:scale-110 group-hover:bg-white/20">
                 <CustomImage

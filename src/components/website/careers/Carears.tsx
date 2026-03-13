@@ -167,13 +167,18 @@ const Careers = () => {
               {/* Extra row: Unknown Role */}
               <tr className="hover:bg-gray-50 transition-colors group  ">
                 <td className="px-6 py-4 text-sm font-medium text-gray-900">
-                  <div>
-                    <p className="font-semibold">Don&apos;t see the right role? <br />
-                    Send us your resume AnyWay
+                  <div className="rounded-md  p-4">
+                    <p className="text-base md:text-xl font-semibold text-gray-900">
+                      Don&apos;t see the right role?
+                  
+                      Send us your resume anyway.
                     </p>
-                    {/* <p className="text-gray-500 text-xs">
-                      Don&apos;t see a fitting role?
-                    </p> */}
+                 
+                    <p className="mt-2 text-sm text-gray-700 leading-relaxed max-w-2xl">
+                      We are always interested in meeting talented people across
+                      consulting, operations, finance, technology, and client
+                      delivery.
+                    </p>
                   </div>
                 </td>
                 <td className="px-6 py-4 text-sm text-gray-500">—</td>
