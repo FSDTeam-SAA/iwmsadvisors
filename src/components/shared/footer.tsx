@@ -127,10 +127,10 @@ const Footer = () => {
       { label: "Careers", url: "/career" },
     ],
     consultingLinks: [
-      { label: "IWMS Consulting", url: "/services" },
-      { label: "IWMS Implementation", url: "/services" },
-      { label: "System Integration", url: "/services" },
-      { label: "Managed Support", url: "/services" },
+      // { label: "IWMS Consulting", url: "/services" },
+      // { label: "IWMS Implementation", url: "/services" },
+      // { label: "System Integration", url: "/services" },
+      // { label: "Managed Support", url: "/services" },
     ],
     contactLinks: [
       { label: "Contact us", url: "/contact" },

@@ -19,6 +19,9 @@ const ContactHero = () => {
   const heroTitle =
     contactHeroData?.title || "Talk to Our Team, Get clear Answers";
   const heroImage = contactHeroData?.image || "/images/contacthero.jpg";
+  const heroSubtitle =
+    contactHeroData?.subtitle ||
+    "Our Whether you need support or want to start a project, our team is here to guide you every step of the way.";
 
   return (
     <section className="relative w-full">
@@ -37,6 +40,9 @@ const ContactHero = () => {
           <h1 className="text-3xl font-bold text-white drop-shadow-lg md:text-5xl lg:text-6xl">
             {heroTitle}
           </h1>
+           <p className="text-xl font-normal leading-[140%] mt-2 text-white">
+            {heroSubtitle}
+          </p>
         </div>
       </div>
     </section>

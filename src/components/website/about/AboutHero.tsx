@@ -18,6 +18,9 @@ const AboutHero = () => {
 
   const heroTitle = aboutHero?.title || "About IWMS Solution";
   const heroImage = aboutHero?.image || "/images/floorplanshero.jpg";
+  const heroSubtitle =
+    aboutHero?.subtitle ||
+    "Leading IWMS consulting and implementation partner, delivering enterprise-grade solutions since 2010 .";
 
   return (
     <section className="relative w-full">
@@ -36,6 +39,9 @@ const AboutHero = () => {
           <h1 className="text-3xl font-bold text-white drop-shadow-lg md:text-5xl lg:text-6xl">
             {heroTitle}
           </h1>
+          <p className="text-xl font-normal leading-[140%] mt-2 text-white">
+            {heroSubtitle}
+          </p>
         </div>
       </div>
     </section>
