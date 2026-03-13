@@ -23,7 +23,7 @@ const Careers = () => {
 
   if (isLoading) {
     return (
-      <section className="w-full bg-gradient-to-b from-gray-50 to-white min-h-screen py-16">
+      <section className="w-full bg-linear-to-b from-gray-50 to-white min-h-screen py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center animate-pulse mb-12">
             <div className="h-12 bg-slate-200 rounded w-64 mx-auto mb-4"></div>
@@ -44,7 +44,7 @@ const Careers = () => {
 
   if (error) {
     return (
-      <section className="w-full bg-gradient-to-b from-gray-50 to-white min-h-screen py-16">
+      <section className="w-full bg-linear-to-b from-gray-50 to-white min-h-screen py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="bg-red-50 border border-red-200 rounded-xl p-6">
             <p className="text-red-600 font-medium">
@@ -57,7 +57,7 @@ const Careers = () => {
   }
 
   return (
-    <section className="w-full bg-gradient-to-b from-gray-50 to-white min-h-screen py-16">
+    <section className="w-full bg-linear-to-b from-gray-50 to-white min-h-screen py-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
@@ -157,36 +157,43 @@ const Careers = () => {
                     </td>
                   </tr>
                 )}
-
-                {/* Extra row: Unknown Role */}
-                <tr className="hover:bg-gray-50 transition-colors group border-t-2 border-dashed border-gray-300">
-                  <td className="px-6 py-4 text-sm font-medium text-gray-900">
-                    <div>
-                      <p className="font-semibold">Unknown Role</p>
-                      <p className="text-gray-500 text-xs">
-                        Don&apos;t see a fitting role?
-                      </p>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 text-sm text-gray-500">—</td>
-                  <td className="px-6 py-4 text-sm text-gray-500">—</td>
-                  <td className="px-6 py-4 text-sm">
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
-                      Open
-                    </span>
-                  </td>
-                  <td className="px-6 py-4 text-center">
-                    <button
-                      onClick={() => setIsModalOpen(true)}
-                      className="inline-flex items-center px-4 py-2 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-primary/80 transition-colors cursor-pointer"
-                    >
-                      Apply
-                    </button>
-                  </td>
-                </tr>
               </tbody>
             </table>
           </div>
+        </div>
+        <div className="mt-6 bg-gray-100 rounded-lg  ">
+          <table className="w-full">
+            <tbody>
+              {/* Extra row: Unknown Role */}
+              <tr className="hover:bg-gray-50 transition-colors group  ">
+                <td className="px-6 py-4 text-sm font-medium text-gray-900">
+                  <div>
+                    <p className="font-semibold">Don&apos;t see the right role? <br />
+                    Send us your resume AnyWay
+                    </p>
+                    {/* <p className="text-gray-500 text-xs">
+                      Don&apos;t see a fitting role?
+                    </p> */}
+                  </div>
+                </td>
+                <td className="px-6 py-4 text-sm text-gray-500">—</td>
+                <td className="px-6 py-4 text-sm text-gray-500">—</td>
+                <td className="px-6 py-4 text-sm">
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
+                    Open
+                  </span>
+                </td>
+                <td className="px-6 py-4 text-center">
+                  <button
+                    onClick={() => setIsModalOpen(true)}
+                    className="inline-flex items-center px-4 py-2 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-primary/80 transition-colors cursor-pointer"
+                  >
+                    Apply
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
 
