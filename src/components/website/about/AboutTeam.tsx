@@ -206,19 +206,22 @@ const AboutTeam = () => {
               {mission ? (
                 <div className="rounded-md border border-slate-200 bg-slate-50 p-6">
                   <div className="flex items-center gap-4">
+                    <div className=" inline-flex h-12 w-12 items-center justify-center rounded-md bg-[#0f66a6]/10 text-[#0f66a6]">
+
                     {mission.image ? (
                       <CustomImage
                         src={mission.image}
                         alt={mission.title || "Mission image"}
                         width={40}
                         height={40}
-                        className="h-10 w-10 rounded-full object-cover"
+                        className="h-8 w-8 rounded-full object-cover"
                       />
                     ) : (
                       <div className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-[#0f66a6]/10 text-[#0f66a6]">
                         <CheckCircle className="h-5 w-5" />
                       </div>
                     )}
+                    </div>
 
                     <h3 className="text-xl font-semibold text-slate-900">
                       {mission.title}
@@ -233,19 +236,22 @@ const AboutTeam = () => {
               {vision ? (
                 <div className="rounded-md border border-slate-200 bg-slate-50 p-6">
                   <div className="flex items-center gap-4">
-                    {vision.image ? (
-                      <CustomImage
-                        src={vision.image}
-                        alt={vision.title || "Vision image"}
-                        width={40}
-                        height={40}
-                        className="h-10 w-10 rounded-full object-cover"
-                      />
-                    ) : (
-                      <div className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-[#0f66a6]/10 text-[#0f66a6]">
-                        <Briefcase className="h-5 w-5" />
-                      </div>
-                    )}
+                    <div className=" inline-flex h-12 w-12 items-center justify-center rounded-md bg-[#0f66a6]/10 text-[#0f66a6]">
+
+                      {vision.image ? (
+                        <CustomImage
+                          src={vision.image}
+                          alt={vision.title || "Vision image"}
+                          width={40}
+                          height={40}
+                          className="h-8 w-8 rounded-full object-cover"
+                        />
+                      ) : (
+                        <div className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-[#0f66a6]/10 text-[#0f66a6]">
+                          <Briefcase className="h-5 w-5" />
+                        </div>
+                      )}
+                    </div>
 
                     <h3 className="text-xl font-semibold text-slate-900">
                       {vision.title}
@@ -283,7 +289,7 @@ const AboutTeam = () => {
                     key={item._id}
                     className="rounded-md bg-white p-6 text-center"
                   >
-                    <div className="mb-3 inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#0f66a6]/10 text-[#0f66a6]">
+                    <div className="mb-3 inline-flex h-12 w-12 items-center justify-center rounded-md bg-[#0f66a6]/10 text-[#0f66a6]">
                       {item.image ? (
                         <CustomImage
                           src={item.image}
