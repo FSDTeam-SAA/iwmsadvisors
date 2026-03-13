@@ -14,7 +14,7 @@ const FAQHero = () => {
   const { data } = useHero();
 
   const heroSections: HeroItem[] = Array.isArray(data?.data) ? data.data : [];
-  const faqHeroData = heroSections.find((item) => item?.order === 5);
+  const faqHeroData = heroSections.find((item) => item?.order === 7);
 
   const heroTitle = faqHeroData?.title || "Need Help?";
   const heroSubtitle =
