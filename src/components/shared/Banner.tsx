@@ -13,7 +13,7 @@ const Banner = () => {
   return (
     <section
       id="home"
-      className="relative h-[70vh] lg:h-screen w-full overflow-hidden"
+      className="relative h-[70vh] lg:h-[65vh] w-full overflow-hidden"
     >
       {/* Background Image + Gradient Overlay */}
       <div
@@ -32,7 +32,7 @@ const Banner = () => {
       />
 
       {/* Content */}
-      <div className="relative z-10 mx-auto container flex h-[70vh] lg:min-h-screen items-center reveal">
+      <div className="relative z-10 mx-auto container flex h-[70vh] lg:h-[65vh] items-center reveal">
         <div className=" text-white px-5 lg:px-0">
           {/* Main Heading */}
           <h1 className="text-3xl font-semibold leading-[1.1] sm:text-4xl lg:text  ">
