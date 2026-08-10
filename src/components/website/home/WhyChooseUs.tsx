@@ -12,6 +12,7 @@ type FeatureItem = {
 
 type FeatureSection = {
   _id: string;
+  order?: number;
   title: string;
   subtitle: string;
   items: FeatureItem[];
@@ -25,7 +26,9 @@ type FeaturesResponse = {
 
 const WhyChooseUs = () => {
   const { data } = useFeatures();
-  const featureSection = (data as FeaturesResponse | undefined)?.data?.[2];
+  const sections = (data as FeaturesResponse | undefined)?.data ?? [];
+  const featureSection =
+    sections.find((section) => section.order === 3) ?? sections[0];
 
   const items =
     featureSection?.items
