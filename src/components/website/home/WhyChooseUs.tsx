@@ -28,7 +28,9 @@ const WhyChooseUs = () => {
   const { data } = useFeatures();
   const sections = (data as FeaturesResponse | undefined)?.data ?? [];
   const featureSection =
-    sections.find((section) => section.order === 3) ?? sections[0];
+    sections.find((section) => section.order === 1) ??
+    sections.find((section) => section.title === "Why IWMS Advisors") ??
+    sections[0];
 
   const items =
     featureSection?.items

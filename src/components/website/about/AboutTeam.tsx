@@ -111,6 +111,13 @@ const AboutTeam = () => {
       ? [translationsData.data]
       : [];
   const translation: TranslationItem | undefined = translations[0];
+  const hasTranslationContent = Boolean(
+    translation?.title ||
+      translation?.description ||
+      translation?.image1 ||
+      translation?.image2 ||
+      translation?.image3,
+  );
 
   const heroTitle =
     translation?.title || "Transforming Facility Management Through Technology";
@@ -137,6 +144,13 @@ const AboutTeam = () => {
     "The foundation of our success rests on these core competencies";
 
   const items = itemsData?.data || [];
+  const hasStrengthsContent = Boolean(
+    strengthsData?.data?.length || items.length,
+  );
+  const hasCertificationContent = Boolean(
+    certifications.length && certificationCards.length,
+  );
+  const hasExpertiseContent = Boolean(expertiseSection?.items?.length);
 
   const iconMap: Record<number, typeof CheckCircle> = {
     0: CheckCircle,
@@ -148,45 +162,47 @@ const AboutTeam = () => {
   return (
     <div className="w-full bg-white">
       {/* Hero Section */}
-      <section className="w-full bg-slate-50 py-12 md:py-16">
-        <div className="container mx-auto w-full px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-8 md:grid-cols-2 items-center">
-            <div>
-              <h1 className="text-4xl font-bold text-primary">{heroTitle}</h1>
-              <p className="mt-4 text-base text-[#4A5565] whitespace-pre-line">{heroDescription}</p>
-            </div>
-            <div className="grid gap-3 sm:grid-cols-2 ">
-              <div className="relative w-full aspect-5/3 overflow-hidden rounded-md">
-                <CustomImage
-                  src={heroImage1}
-                  alt="Team collaboration"
-                  width={300}
-                  height={260}
-                  className="object-cover w-full aspect-5/3 rounded-md"
-                />
+      {hasTranslationContent ? (
+        <section className="w-full bg-slate-50 py-12 md:py-16">
+          <div className="container mx-auto w-full px-4 sm:px-6 lg:px-8">
+            <div className="grid gap-8 md:grid-cols-2 items-center">
+              <div>
+                <h1 className="text-4xl font-bold text-primary">{heroTitle}</h1>
+                <p className="mt-4 text-base text-[#4A5565] whitespace-pre-line">{heroDescription}</p>
               </div>
-              <div className="relative w-full aspect-5/3 overflow-hidden rounded-md">
-                <CustomImage
-                  src={heroImage2}
-                  alt="Team meeting"
-                  width={466}
-                  height={260}
-                  className="object-cover w-full aspect-5/3 rounded-md"
-                />
-              </div>
-              <div className="relative overflow-hidden w-full aspect-5/3 rounded-md sm:col-span-2">
-                <CustomImage
-                  src={heroImage3}
-                  alt="Team workspace"
-                  width={796}
-                  height={410}
-                  className="object-cover w-full aspect-5/3 rounded-md"
-                />
+              <div className="grid gap-3 sm:grid-cols-2 ">
+                <div className="relative w-full aspect-5/3 overflow-hidden rounded-md">
+                  <CustomImage
+                    src={heroImage1}
+                    alt="Team collaboration"
+                    width={300}
+                    height={260}
+                    className="object-cover w-full aspect-5/3 rounded-md"
+                  />
+                </div>
+                <div className="relative w-full aspect-5/3 overflow-hidden rounded-md">
+                  <CustomImage
+                    src={heroImage2}
+                    alt="Team meeting"
+                    width={466}
+                    height={260}
+                    className="object-cover w-full aspect-5/3 rounded-md"
+                  />
+                </div>
+                <div className="relative overflow-hidden w-full aspect-5/3 rounded-md sm:col-span-2">
+                  <CustomImage
+                    src={heroImage3}
+                    alt="Team workspace"
+                    width={796}
+                    height={410}
+                    className="object-cover w-full aspect-5/3 rounded-md"
+                  />
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : null}
 
       {/* Stats Section */}
       {/* <section className="w-full bg-[#0f66a6] py-8 text-white">
@@ -276,20 +292,20 @@ const AboutTeam = () => {
       </section> */}
 
       {/* Core Strengths */}
-      <section className="w-full bg-primary py-12 text-white">
-        <div className="container mx-auto w-full px-4 sm:px-6 lg:px-8">
-          <div className="text-center text-white">
-            <h2 className="text-4xl mb-2 font-bold leading-[150%]">
-              {strengthsTitle}
-            </h2>
-            <p className="mt-1 text-xl leading-[120%] font-normal">
-              {strengthsSubtitle}
-            </p>
-          </div>
+      {hasStrengthsContent ? (
+        <section className="w-full bg-primary py-12 text-white">
+          <div className="container mx-auto w-full px-4 sm:px-6 lg:px-8">
+            <div className="text-center text-white">
+              <h2 className="text-4xl mb-2 font-bold leading-[150%]">
+                {strengthsTitle}
+              </h2>
+              <p className="mt-1 text-xl leading-[120%] font-normal">
+                {strengthsSubtitle}
+              </p>
+            </div>
 
-          <div className="mt-8 md:mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {items.length > 0 ? (
-              items.map((item: IItem, index: number) => {
+            <div className="mt-8 md:mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {items.map((item: IItem, index: number) => {
                 const IconComponent = iconMap[index % 4] || CheckCircle;
                 return (
                   <div
@@ -317,66 +333,16 @@ const AboutTeam = () => {
                     </p>
                   </div>
                 );
-              })
-            ) : (
-              <>
-                <div className="rounded-md bg-white p-6 text-center">
-                  <div className="mb-3 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-[#0f66a6]/10 text-[#0f66a6]">
-                    <CheckCircle className="h-5 w-5" />
-                  </div>
-                  <h3 className="font-semibold text-slate-900">
-                    IWMS Expertise
-                  </h3>
-                  <p className="mt-2 text-sm text-slate-600">
-                    Deep technical and functional knowledge of leading IWMS platforms
-                  </p>
-                </div>
-
-                <div className="rounded-md bg-white p-6 text-center">
-                  <div className="mb-3 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-[#0f66a6]/10 text-[#0f66a6]">
-                    <Award className="h-5 w-5" />
-                  </div>
-                  <h3 className="font-semibold text-slate-900">
-                    Certified Expertise
-                  </h3>
-                  <p className="mt-2 text-sm text-slate-600">
-                    Industry-recognized certifications and continuous professional development
-                  </p>
-                </div>
-
-                <div className="rounded-md bg-white p-6 text-center">
-                  <div className="mb-3 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-[#0f66a6]/10 text-[#0f66a6]">
-                    <Briefcase className="h-5 w-5" />
-                  </div>
-                  <h3 className="font-semibold text-slate-900">
-                    Smart Technology
-                  </h3>
-                  <p className="mt-2 text-sm text-slate-600">
-                    Integration with IoT, analytics, and automation for intelligent operations
-                  </p>
-                </div>
-
-                <div className="rounded-md bg-white p-6 text-center">
-                  <div className="mb-3 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-[#0f66a6]/10 text-[#0f66a6]">
-                    <Lock className="h-5 w-5" />
-                  </div>
-                  <h3 className="font-semibold text-slate-900">
-                    Trust & Security
-                  </h3>
-                  <p className="mt-2 text-sm text-slate-600">
-                    Enterprise-grade security and compliance with industry standards
-                  </p>
-                </div>
-              </>
-            )}
+              })}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : null}
 
       {/* Certifications */}
-      <section className="w-full bg-white py-12">
-        <div className="container mx-auto w-full px-4 sm:px-6 lg:px-8">
-          {certifications.length > 0 ? (
+      {hasCertificationContent ? (
+        <section className="w-full bg-white py-12">
+          <div className="container mx-auto w-full px-4 sm:px-6 lg:px-8">
             <>
               <div className="text-center">
                 <h2 className="text-3xl font-bold text-slate-900">
@@ -397,29 +363,25 @@ const AboutTeam = () => {
                 ))}
               </div>
             </>
-          ) : (
-            <p className="text-center text-base text-slate-500">
-              {/* You have not this section. */}
-            </p>
-          )}
-        </div>
-      </section>
+          </div>
+        </section>
+      ) : null}
 
       {/* Expertise */}
-      <section className="w-full bg-primary py-12 text-white">
-        <div className="container mx-auto w-full px-4 sm:px-6 lg:px-8">
-          {expertiseSection ? (
+      {hasExpertiseContent ? (
+        <section className="w-full bg-primary py-12 text-white">
+          <div className="container mx-auto w-full px-4 sm:px-6 lg:px-8">
             <>
               <div className="text-center text-white">
                 <h2 className="text-4xl mb-2 font-bold leading-[150%]">
-                  {expertiseSection.title}
+                  {expertiseSection?.title}
                 </h2>
                 <p className="mt-1 text-xl leading-[120%] font-normal">
-                  {expertiseSection.subtitle}
+                  {expertiseSection?.subtitle}
                 </p>
               </div>
               <div className="mt-8 md:mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                {expertiseSection.items?.map((item: FeatureItem, index: number) => {
+                {expertiseSection?.items?.map((item: FeatureItem, index: number) => {
                   const IconComponent = iconMap[index % 4] || CheckCircle;
                   return (
                     <div
@@ -450,13 +412,9 @@ const AboutTeam = () => {
                 })}
               </div>
             </>
-          ) : (
-            <p className="text-center text-base text-slate-500">
-              You have not this section.
-            </p>
-          )}
-        </div>
-      </section>
+          </div>
+        </section>
+      ) : null}
 
     </div>
   );
