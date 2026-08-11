@@ -44,7 +44,7 @@ const BlogAndArticles = () => {
   const blogs = blogData?.data ?? [];
 
   return (
-    <section className="w-full bg-white py-12">
+    <section className="w-full bg-white py-10">
       <div className="mx-auto w-full container  px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h3 className="text-3xl md:text-4xl font-bold  text-[#2C2C2C] ">
@@ -56,16 +56,16 @@ const BlogAndArticles = () => {
         </div>
 
         {blogs.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-20 text-center gap-6">
-            {/* Badge */}
+          <div className="">
+
             {/* <span className="inline-block bg-[#EEF2FF] text-[#2563EB] text-xs font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full">
               Coming Soon
-            </span> */}
+            </span>
 
-            {/* Heading */}
+            
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-snug">
-              Coming Soon ...
-            </h2>
+              Coming Soon ... a
+            </h2> */}
 
           </div>
         ) : (

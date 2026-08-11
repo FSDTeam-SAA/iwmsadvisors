@@ -399,7 +399,7 @@ const AboutTeam = () => {
             </>
           ) : (
             <p className="text-center text-base text-slate-500">
-              You have not this section.
+              {/* You have not this section. */}
             </p>
           )}
         </div>

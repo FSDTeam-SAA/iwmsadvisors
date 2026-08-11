@@ -137,9 +137,10 @@ const Footer = () => {
       { label: "Home", url: "/" },
       { label: "Services", url: "/services" },
       { label: "Case Studies", url: "/case-study" },
+      { label: "Faq", url: "/faq" },
       { label: "About", url: "/about" },
       { label: "Insights", url: "/insights" },
-      { label: "Careers", url: "/career" },
+      { label: "Careers", url: "/careers" },
     ],
     consultingLinks: [
       // { label: "IWMS Consulting", url: "/services" },

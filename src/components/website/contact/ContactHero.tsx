@@ -15,7 +15,7 @@ const ContactHero = () => {
   const { data } = useHero();
 
   const heroSections: HeroItem[] = Array.isArray(data?.data) ? data.data : [];
-  const contactHeroData = heroSections.find((item) => item?.order === 5);
+  const contactHeroData = heroSections.find((item) => item?.order === 7);
 
   const heroTitle =
     contactHeroData?.title || "Talk to Our Team, Get clear Answers";
