@@ -109,9 +109,9 @@ const Careers = () => {
                   <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">
                     Type
                   </th>
-                  <th className="px-6 py-4 text-center text-sm font-semibold text-gray-700">
+                  {/* <th className="px-6 py-4 text-center text-sm font-semibold text-gray-700">
                     Openings
-                  </th>
+                  </th> */}
                   <th className="px-6 py-4 text-center text-sm font-semibold text-gray-700">
                     Action
                   </th>
@@ -154,9 +154,9 @@ const Careers = () => {
                           ))}
                         </div>
                       </td>
-                      <td className="px-6 py-4 text-sm text-center text-gray-700">
+                      {/* <td className="px-6 py-4 text-sm text-center text-gray-700">
                         {career.multiplePosition ? "Multiple" : "-"}
-                      </td>
+                      </td> */}
                       <td className="px-6 py-4 text-center">
                         <Link
                           href={`/careers/${slugify(career.title)}`}
